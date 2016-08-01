@@ -1,0 +1,14 @@
+<section id="container">
+  <section>
+    <% if @cards.empty? %>
+      <h3>В вашей библиотеке нет ни одной карточки!<h3>
+    <% else %>
+      <% @cards.each do |card| %>
+        <h2><%= card.original_text %></h2>
+        <h3><%= card.translated_text %></h3>
+        <p><%= card.review_date.strftime("%d/%m/%Y") %></p>
+        <br>
+      <% end %>
+    <% end %>
+  </section>
+</section>
