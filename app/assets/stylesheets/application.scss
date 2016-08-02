@@ -19,65 +19,69 @@
  * === MAIN STYLES ===
  */
 
- @import url(https://fonts.googleapis.com/css?family=Lato:700,300);
+@import url(https://fonts.googleapis.com/css?family=Lato:700,300);
 
- body {
-   font-family: 'Lato', sans-serif;
- }
+$green: #1d976c;
 
- .navbar-brand {
-   text-transform: uppercase;
-   font-size: 2em;
-   font-weight: 700;
- }
+body {
+  font-family: 'Lato', sans-serif;
+}
 
- .container {
-   h2 {
-     a {
-       color: #000000;
-       &:hover {
-         text-decoration: none;
-         opacity: 0.4;
-       }
-     }
-   }
-  .jumbotron {
-    .btn {
-      background-color: #1D976C;
-      border-color: #1D976C;
-      color: #fff;
+.navbar-brand {
+  text-transform: uppercase;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+.container {
+  a {
+    color: #000000;
+
+    &:hover {
+      text-decoration: none;
     }
   }
- }
+}
 
- .panel {
-   text-align: center;
-   .panel-heading {
-     .panel-title {
-       text-transform: uppercase;
-       font-size: 2em;
-       a:hover {
-         text-decoration: none;
-         opacity: 0.4;
-       }
-     }
-   }
-   .panel-body {
-     text-transform: uppercase;
-     font-size: 2em;
-     margin: 0;
-   }
-   .panel-footer {
-     padding: 0.5em 1em;
-     p {
-       margin: 0;
-       padding: 0.3em 0;
-     }
-   }
- }
+.jumbotron {
+  
+  .btn {
+    background-color: $green;
+    border-color: $green;
+    color: #ffffff;
+  }
+}
+
+.panel {
+  text-align: center;
+}
+
+.panel-title {
+  font-size: 2rem;
+  text-transform: uppercase;
+
+  a:hover {
+    opacity: 0.4;
+    text-decoration: none;
+  }
+}
+
+.panel-body {
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.panel-footer {
+  padding: 0.5em 1em;
+
+  p {
+    margin: 0;
+    padding: 0.3em 0;
+  }
+}
 
  #logo {
-   color: #1D976C;
+   color: $green;
  }
 
  #container {
