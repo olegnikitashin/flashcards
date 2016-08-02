@@ -1,14 +1,22 @@
-<section id="container">
-  <section>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
     <% if @cards.empty? %>
       <h3>В вашей библиотеке нет ни одной карточки!<h3>
     <% else %>
       <% @cards.each do |card| %>
-        <h2><%= card.original_text %></h2>
-        <h3><%= card.translated_text %></h3>
-        <p><%= card.review_date.strftime("%d/%m/%Y") %></p>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h1 class="panel-title"><%= link_to card.original_text, card %></h1>
+          </div>
+          <div class="panel-body">
+            <h3 class="panel-title"><%= card.translated_text %></h3>
+          </div>
+          <div class="panel-footer">
+            <p><%= card.review_date.strftime("%d/%m/%Y") %></p>
+          </div>
+        </div>
         <br>
       <% end %>
     <% end %>
-  </section>
-</section>
+  </div>
+</div>
