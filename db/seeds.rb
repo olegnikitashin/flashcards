@@ -5,3 +5,36 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'rubygems'
+require 'nokogiri'
+require 'open-uri'
+
+
+1.upto(10) do |pagenum|
+  page_url = "http://www.languagedaily.com/learn-german/vocabulary/common-german-words-#{pagenum}"
+
+  begin
+    page = Nokogiri::HTML(open(page_url))
+
+    path_one = 'div.jsn-article-content table tbody tr.row'
+    path_two = 'td.bigLetter'
+    path_three = ' + td'
+
+    word_parse = page.css("#{path_one}A #{path_two}") + page.css("#{path_one}B #{path_two}")
+    description_parse = page.css("#{path_one}A #{path_two} #{path_three}") + page.css("#{path_one}B #{path_two} #{path_three}")
+
+    words = Hash[word_parse.zip description_parse]
+
+    words.each do |word, definition|
+      if definition.text.to_s.length > 2
+        Card.create(original_text: word.text, translated_text: definition.text, review_date: Time.now)
+      end
+    end
+
+  rescue OpenURI::HTTPError => e
+    puts "Can't access #{page_url}"
+    puts e.message
+    puts
+    next
+  end
+end
