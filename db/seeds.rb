@@ -16,20 +16,11 @@ require 'open-uri'
 
   begin
     page = Nokogiri::HTML(open(page_url))
-    a = page.css('div.jsn-article-content table tbody tr.rowA td.bigLetter')
-    b = page.css('div.jsn-article-content table tbody tr.rowA td.bigLetter + td')
-    c = page.css('div.jsn-article-content table tbody tr.rowB td.bigLetter')
-    d = page.css('div.jsn-article-content table tbody tr.rowB td.bigLetter + td')
-    words_a = Hash[a.zip b]
-    words_b = Hash[c.zip d]
+    word_parse = page.css('div.jsn-article-content table tbody tr.rowA td.bigLetter') + page.css('div.jsn-article-content table tbody tr.rowB td.bigLetter')
+    description_parse = page.css('div.jsn-article-content table tbody tr.rowA td.bigLetter + td') + page.css('div.jsn-article-content table tbody tr.rowB td.bigLetter + td')
+    words = Hash[word_parse.zip description_parse]
 
-    words_a.each do |word, definition|
-      if definition.text.to_s.length > 2
-        Card.create( original_text: word.text, translated_text: definition.text, review_date: Time.now )
-      end
-    end
-
-    words_b.each do |word, definition|
+    words.each do |word, definition|
       if definition.text.to_s.length > 2
         Card.create( original_text: word.text, translated_text: definition.text, review_date: Time.now )
       end
