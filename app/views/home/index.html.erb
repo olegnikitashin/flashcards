@@ -1,19 +1,34 @@
 <div class="jumbotron">
   <header class="clearfix">
     <h1>Флэшкарточкер</h1>
-    <!-- <div class="btn-group navigation-links" role="group" aria-label="...">
-      <a class="btn btn-default" href="#">Все карточки</a>
-      <a class="btn btn-default" href="#">Добавить карточку</a>
-    </div> -->
   </header>
 
-  <section>
+  <div class="row">
     <p style="font-size: 22px;">
       Первый в мире удобный менеджер флеш-карточек. Именно так.
     </p>
+    <div class="col-md-6 col-md-offset-3">
+      <% if @random_card %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+              <%= form_tag check_card_path do %>
+                <%= text_field_tag :input_text, "", class: 'form-control' %>
+                <%= hidden_field_tag :id, @random_card.id %>
+          </div>
+          <div class="panel-body">
+            <h3 class="panel-title"><%= @random_card.translated_text %></h3>
+          </div>
+          <div class="panel-footer">
+            <p>
+              <%= submit_tag 'Check!', class: "btn btn-primary" %>
+            <% end %>
+            </p>
+          </div>
+      <% else %>
+        <p>All of the cards have been revised! Well done!</p>
+      <% end %>
+      </div>
+    </div>
     <br>
-    <p>
-      <%= link_to 'Все карточки', cards_path, class: "btn btn-lg" %>
-    </p>
-  </section>
+  </div>
 </div>
