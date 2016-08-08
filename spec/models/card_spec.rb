@@ -29,7 +29,6 @@ describe Card do
     original_text: "Beer", translated_text: "Пиво", review_date: Time.now)
     card.valid?
     expect(card.errors[:original_text]).to include("Данное слово уже есть в базе")
-        # expect(card.errors[:translated_text]).to include("has already been taken")
   end
 
   it "is invalid with a matching word" do

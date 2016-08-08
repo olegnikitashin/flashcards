@@ -9,7 +9,7 @@ class Card < ActiveRecord::Base
   end
 
   def words_equal?(input_text)
-      original_text.downcase.strip == input_text.downcase.strip
+    original_text.downcase.strip == input_text.downcase.strip
   end
 
   def update_date
