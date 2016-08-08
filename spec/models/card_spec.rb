@@ -10,18 +10,6 @@ describe Card do
     expect(card).to be_valid
   end
 
-  it "is invalid without a original_text" do
-    card = Card.new(original_text: nil)
-    card.valid?
-    expect(card.errors[:original_text]).to include("can't be blank")
-  end
-
-  it "is invalid without a translated_text" do
-    card = Card.new(translated_text: nil)
-    card.valid?
-    expect(card.errors[:translated_text]).to include("can't be blank")
-  end
-
   it "is invalid with a duplicate word" do
     Card.create(
     original_text: "Beer", translated_text: "Пиво", review_date: Time.now)
