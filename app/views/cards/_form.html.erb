@@ -1,7 +1,6 @@
 <%= simple_form_for(@card, html: { class: 'form-horizontal' }) do |f| %>
   <%= f.input :original_text, label: 'Оригинал слова', input_html: { class: 'form-control' } %>
   <%= f.input :translated_text, label: 'Перевод', input_html: { class: 'form-control' }  %>
-  <%= f.input :review_date, label: 'Дата повторения', input_html: { class: 'form-control' }  %>
   <%= f.submit (f.object.new_record? ? 'Создать карточку' : 'Редактировать карточку'), class: 'btn btn-default' %>
   <%= link_to 'Назад', cards_path, class: "btn btn-default" %>
 <% end %>

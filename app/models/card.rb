@@ -1,11 +1,8 @@
 class Card < ActiveRecord::Base
-  validates :original_text, :translated_text, :review_date, presence: true
+  before_create :set_review_date
+  validates :original_text, :translated_text, presence: true
   validates :original_text, uniqueness: { message: "Данное слово уже есть в базе" }
   validate :validate_match
-
-  before_create do
-    self.review_date = 3.days.from_now
-  end
 
   def self.random_card
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
@@ -16,7 +13,7 @@ class Card < ActiveRecord::Base
   end
 
   def update_date
-    update(review_date: 3.days.from_now)
+    update(review_date: Date.today + 3)
   end
 
   def validate_match
@@ -24,5 +21,11 @@ class Card < ActiveRecord::Base
       errors[:original_text] = "Слова совпадают"
       errors[:translated_text] = "Слова совпадают"
     end
+  end
+
+  private
+
+  def set_review_date
+    self.review_date = Date.today + 3
   end
 end
