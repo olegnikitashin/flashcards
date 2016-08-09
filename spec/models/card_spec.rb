@@ -7,7 +7,7 @@ describe Card do
       translated_text: 'Кровать',
       review_date: Time.now,
       user_id: '1'
-      )
+    )
     expect(card).to be_valid
   end
 
@@ -17,13 +17,13 @@ describe Card do
       translated_text: "Пиво",
       review_date: Time.now,
       user_id: '1'
-      )
+    )
     card = Card.new(
       original_text: "Beer",
       translated_text: "Пиво",
       review_date: Time.now,
       user_id: '1'
-      )
+    )
     card.valid?
     expect(card.errors[:original_text]).to include("Данное слово уже есть в базе")
   end
@@ -34,7 +34,7 @@ describe Card do
       translated_text: "beer",
       review_date: Time.now,
       user_id: '1'
-      )
+    )
     expect(card.errors[:original_text]).to include("Слова совпадают")
   end
 
@@ -44,7 +44,7 @@ describe Card do
       translated_text: "beer",
       review_date: Date.today,
       user_id: '1'
-      )
+    )
     card.update_date
     expect(card.review_date).to eq Date.today + 3
   end
