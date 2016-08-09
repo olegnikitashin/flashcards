@@ -6,9 +6,6 @@ services:
 env:
   RAILS_ENV=test SECRET_KEY_BASE='$(bundle exec rake secret)'
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
   - cp config/database.yml.travis config/database.yml
-script:
-  - bundle exec rake db:create
-  - bundle exec rake db:migrate
-  - bundle exec rake db:test:prepare
+  - psql -c 'create database travis_ci_test;' -U postgres
+  - bin/rake db:migrate RAILS_ENV=test
