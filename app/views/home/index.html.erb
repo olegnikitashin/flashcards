@@ -11,24 +11,21 @@
       <% if @random_card %>
         <div class="panel panel-default">
           <div class="panel-heading">
-              <%= form_tag check_card_path do %>
-                <%= text_field_tag :input_text, "", class: 'form-control' %>
-                <%= hidden_field_tag :id, @random_card.id %>
+            <%= @random_card.translated_text %>
           </div>
           <div class="panel-body">
-            <h3 class="panel-title"><%= @random_card.translated_text %></h3>
-          </div>
-          <div class="panel-footer">
-            <p>
-              <%= submit_tag 'Check!', class: "btn btn-primary" %>
+            <%= form_tag check_card_path do  %>
+              <%= text_field_tag :input_text, nil, class: 'form-control', required: true, autofocus: true %>
+              <%= hidden_field_tag :id, @random_card.id %>
+              <br>
+              <p><%= submit_tag 'Check', class: "btn btn-primary" %></p>
             <% end %>
-            </p>
-          </div>
+            </div>
+        </div>
       <% else %>
         <p>All of the cards have been revised! Well done!</p>
       <% end %>
-      </div>
     </div>
-    <br>
   </div>
+  <br>
 </div>
