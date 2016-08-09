@@ -6,6 +6,7 @@ class HomeController < ApplicationController
   def check_card
     @card = Card.find(params[:id])
     @input_text = params[:input_text]
+
     if @card.words_equal?(@input_text)
       @card.update_date
       flash[:info] = "Correct translation. Well done!"
