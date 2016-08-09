@@ -1,12 +1,13 @@
 require 'rails_helper'
 
 describe Card do
+  let!(:user) { create :user }
   it "is valid with an original_text, translated_text and review_date" do
     card = Card.new(
       original_text: 'Bed',
       translated_text: 'Кровать',
       review_date: Time.now,
-      user_id: '1'
+      user: user
     )
     expect(card).to be_valid
   end
@@ -16,13 +17,13 @@ describe Card do
       original_text: "Beer",
       translated_text: "Пиво",
       review_date: Time.now,
-      user_id: '1'
+      user: user
     )
     card = Card.new(
       original_text: "Beer",
       translated_text: "Пиво",
       review_date: Time.now,
-      user_id: '1'
+      user: user
     )
     card.valid?
     expect(card.errors[:original_text]).to include("Данное слово уже есть в базе")
@@ -33,7 +34,7 @@ describe Card do
       original_text: "Beer",
       translated_text: "beer",
       review_date: Time.now,
-      user_id: '1'
+      user: user
     )
     expect(card.errors[:original_text]).to include("Слова совпадают")
   end
@@ -43,7 +44,7 @@ describe Card do
       original_text: "Beer",
       translated_text: "beer",
       review_date: Date.today,
-      user_id: '1'
+      user: user
     )
     card.update_date
     expect(card.review_date).to eq Date.today + 3
