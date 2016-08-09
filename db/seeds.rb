@@ -9,6 +9,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
+user1 = User.create(email: "user1@example.com", password: "foobar")
 
 1.upto(10) do |pagenum|
   page_url = "http://www.languagedaily.com/learn-german/vocabulary/common-german-words-#{pagenum}"
@@ -25,9 +26,15 @@ require 'open-uri'
 
     words = Hash[word_parse.zip description_parse]
 
+    # words.each do |word, definition|
+    #   if definition.text.to_s.length > 2
+    #     Card.create(original_text: word.text, translated_text: definition.text, review_date: Time.now, user_id: user1)
+    #   end
+    # end
+
     words.each do |word, definition|
       if definition.text.to_s.length > 2
-        Card.create(original_text: word.text, translated_text: definition.text, review_date: Time.now)
+        user1.cards.create(original_text: word.text, translated_text: definition.text, review_date: Time.now)
       end
     end
 

@@ -1,6 +1,8 @@
 class Card < ActiveRecord::Base
+  belongs_to :user
+
   before_create :set_review_date
-  validates :original_text, :translated_text, presence: true
+  validates :original_text, :translated_text, :user_id, presence: true
   validates :original_text, uniqueness: { message: "Данное слово уже есть в базе" }
   validate :validate_match
 
