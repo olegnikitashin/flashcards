@@ -13,6 +13,8 @@
           </div>
           <div class="panel-footer">
             <p><%= card.review_date.strftime("%d/%m/%Y") %></p>
+            <hr>
+            <p>Was created by <%= card.user.email %></p>
           </div>
         </div>
         <br>

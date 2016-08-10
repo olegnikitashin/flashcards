@@ -4,7 +4,7 @@
 # 1) You need to run the db:drop
 # 2) Rake task with the environment option so the initializer is picked up: rake environment db:drop
 # 3) pg_stat_activity.pid column was called pg_stat_activity.procpid in Postgres < 9.2. Make sure to replace it if you're working with an older version of Postgres.
-#
+# 4) rake db:setup
 module ActiveRecord
   module Tasks
     class PostgreSQLDatabaseTasks
