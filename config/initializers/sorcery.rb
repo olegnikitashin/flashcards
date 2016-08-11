@@ -112,20 +112,20 @@ Rails.application.config.sorcery.configure do |config|
   config.twitter.key = ENV['SORCERY_TWITTER_KEY']
   config.twitter.secret = ENV['SORCERY_TWITTER_SECRET']
   config.twitter.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=twitter"
-  config.twitter.user_info_mapping = {:email => "screen_name"}
+  config.twitter.user_info_mapping = { email: "screen_name" }
   #
   config.facebook.key = ENV['SORCERY_FACEBOOK_KEY']
   config.facebook.secret = ENV['SORCERY_FACEBOOK_SECRET']
   config.facebook.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=facebook"
-  config.facebook.user_info_mapping = {:email => "name"}
-  config.facebook.access_permissions = ["email", "publish_actions"]
+  config.facebook.user_info_mapping = { email: "name" }
+  config.facebook.access_permissions = %w(email publish_actions)
   config.facebook.display = "page"
   config.facebook.api_version = "v2.7"
   #
   config.github.key = ENV['SORCERY_GITHUB_KEY']
   config.github.secret = ENV['SORCERY_GITHUB_SECRET']
   config.github.callback_url = "http://0.0.0.0:3000/oauth/callback?provider=github"
-  config.github.user_info_mapping = {:email => "name"}
+  config.github.user_info_mapping = { email: "name" }
 
   # Rails.application.secrets.sorcery_github_key=edc545fd609bb86568eb
   # Rails.application.secrets.sorcery_github_secret=91844cf97fd03068a7ae10efb054a346c28cf442
