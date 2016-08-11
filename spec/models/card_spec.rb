@@ -26,7 +26,7 @@ describe Card do
       user: user
     )
     card.valid?
-    expect(card.errors[:original_text]).to include("Данное слово уже есть в базе")
+    expect(card.errors[:original_text]).to include("has already been taken")
   end
 
   it "is invalid with a matching word" do
@@ -36,7 +36,7 @@ describe Card do
       review_date: Time.now,
       user: user
     )
-    expect(card.errors[:original_text]).to include("Слова совпадают")
+    expect(card.errors[:original_text]).to include("Words match")
   end
 
   it "updates the review date" do

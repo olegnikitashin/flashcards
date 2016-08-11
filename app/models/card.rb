@@ -8,7 +8,7 @@ class Card < ActiveRecord::Base
 
 
   def self.random_card
-    @random_card = Card.where('review_date <= ?', Date.today+3.days).order("RANDOM()").first
+    @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
   end
 
   def words_equal?(input_text)
@@ -21,8 +21,8 @@ class Card < ActiveRecord::Base
 
   def validate_match
     if original_text.downcase.strip == translated_text.downcase.strip
-      errors[:original_text] = "Слова совпадают"
-      errors[:translated_text] = "Слова совпадают"
+      errors[:original_text] = "Words match"
+      errors[:translated_text] = "Words match"
     end
   end
 

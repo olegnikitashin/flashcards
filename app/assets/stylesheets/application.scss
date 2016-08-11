@@ -18,7 +18,7 @@
  /*
  * === MAIN STYLES ===
  */
-
+@import "font-awesome";
 @import url(https://fonts.googleapis.com/css?family=Lato:700,300);
 
 $green: #1d976c;
@@ -44,11 +44,18 @@ body {
 }
 
 .jumbotron {
-  
+
   .btn {
     background-color: $green;
     border-color: $green;
     color: #ffffff;
+  }
+  .fa-stack {
+    color: $green;
+
+    &:hover {
+      color: #ffffff;
+    }
   }
 }
 
