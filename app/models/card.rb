@@ -3,11 +3,12 @@ class Card < ActiveRecord::Base
 
   before_create :set_review_date
   validates :original_text, :translated_text, :user_id, presence: true
-  validates :original_text, uniqueness: { message: "Данное слово уже есть в базе" }
+  validates_uniqueness_of :original_text, :scope => :user_id, :case_sensitive => false
   validate :validate_match
 
+
   def self.random_card
-    @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
+    @random_card = Card.where('review_date <= ?', Date.today+3.days).order("RANDOM()").first
   end
 
   def words_equal?(input_text)

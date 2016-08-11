@@ -1,0 +1,6 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :email, label: 'Email:', input_html: { class: 'form-control' } %>
+  <%= f.input :password, label: 'Password:', input_html: { class: 'form-control' } %>
+  <%= f.input :password_confirmation, label: 'Password confirmation:', input_html: { class: 'form-control' } %>
+  <%= f.submit (f.object.new_record? ? 'Create' : 'Update'), input_html:{ class: 'btn btn-default' } %>
+<% end %>

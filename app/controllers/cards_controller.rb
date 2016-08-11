@@ -2,18 +2,18 @@ class CardsController < ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy]
 
   def index
-    @cards = Card.order(created_at: :desc)
+    @cards = current_user.cards.order(created_at: :desc)
   end
 
   def show
   end
 
   def new
-    @card = Card.new
+    @card = current_user.cards.new
   end
 
   def create
-    @card = Card.new(card_params)
+    @card = current_user.cards.new(card_params)
 
     if @card.save
       redirect_to @card, notice: 'Карточка успешно сохранена!'
@@ -26,7 +26,7 @@ class CardsController < ApplicationController
   end
 
   def update
-    if @card.update(card_params)
+    if current_user.cards.update(card_params)
       redirect_to @card, notice: 'Карточка успешно отредактирована!'
     else
       render :edit
@@ -41,7 +41,7 @@ class CardsController < ApplicationController
   private
 
   def set_card
-    @card = Card.find(params[:id])
+    @card = current_user.cards.find(params[:id])
   end
 
   def card_params
