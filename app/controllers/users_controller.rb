@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      redirect_to root_path, notice: "Пользователь #{@user.email} успешно создан!"
+      redirect_to :dashboard, notice: "Пользователь #{@user.email} успешно создан!"
     else
       flash.now[:alert] = 'Пользователь не был создан!'
       render 'new'
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to root_path, notice: "Данные пользователя #{@user.email} успешно обновлены!"
+      redirect_to :dashboard, notice: "Данные пользователя #{@user.email} успешно обновлены!"
     else
       flash.now[:alert] = "Данные пользователя #{@user.email} не были успешно обновлены!"
       render 'edit'

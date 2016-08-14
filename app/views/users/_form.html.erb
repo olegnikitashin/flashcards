@@ -4,18 +4,14 @@
   <%= f.input :password_confirmation, label: 'Password confirmation:', input_html: { class: 'form-control' } %>
   <%= f.submit (f.object.new_record? ? 'Create' : 'Update'), class: 'btn btn-default' %>
 <% end %>
-<% if current_user.nil? %>
+<% unless current_user %>
   <div class="form-group text-center">
     <label for="social_icons">Connect with:</label>
     <div>
-      <%= link_to auth_at_provider_path(provider: :facebook) do %>
-        <%= fa_stacked_icon "facebook", base: "square-o", class: "fa-2x" %>
-      <% end %>
-      <%= link_to auth_at_provider_path(provider: :twitter) do %>
-        <%= fa_stacked_icon "twitter", base: "square-o", class: "fa-2x" %>
-      <% end %>
-      <%= link_to auth_at_provider_path(provider: :github) do %>
-        <%= fa_stacked_icon "github", base: "square-o", class: "fa-2x" %>
+      <% %w(github facebook twitter).map do |link| %>
+        <%= link_to auth_at_provider_path(provider: link) do %>
+          <%= fa_stacked_icon link, base: "square-o", class: "fa-2x" %>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -1,9 +1,11 @@
 class HomeController < ApplicationController
-  before_action :require_login, except: [:index]
+  skip_before_filter :require_login, only: :welcome
+
+  def welcome
+  end
+
   def index
-    if current_user
-      @random_card = current_user.cards.random_card
-    end
+    @random_card = current_user.cards.random_card
   end
 
   def check_card
@@ -13,7 +15,7 @@ class HomeController < ApplicationController
     if @card.words_equal?(@input_text)
       @card.update_date
       flash[:info] = "Correct translation. Well done!"
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       flash[:danger] = "Incorrect translation. Please review the word!"
       redirect_to @card

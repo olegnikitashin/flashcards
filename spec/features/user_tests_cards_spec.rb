@@ -15,13 +15,13 @@ describe "Main", type: :feature do
       click_button 'Log In'
     end
     it 'will return: Correct translation. Well done! if the translation is correct' do
-      visit root_path
+      visit :dashboard
       fill_in 'Translation', with: 'Door'
       click_button 'Check'
       expect(page).to have_content 'Correct translation. Well done!'
     end
     it 'will return: Incorrect translation. Please review the word! if the translation is incorrect' do
-      visit root_path
+      visit :dashboard
       fill_in 'Translation', with: 'Wrong'
       click_button 'Check'
       expect(page).to have_content 'Incorrect translation. Please review the word!'
