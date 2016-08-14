@@ -9,7 +9,7 @@ require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
-user1 = User.create(email: "user1@example.com", password: "foobar")
+user1 = User.create(email: "test1@example.com", password: "foobar", password_confirmation: "foobar")
 
 1.upto(10) do |pagenum|
   page_url = "http://www.languagedaily.com/learn-german/vocabulary/common-german-words-#{pagenum}"

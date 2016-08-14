@@ -1,8 +1,21 @@
 Rails.application.routes.draw do
-  root 'home#index'
 
-  resources :cards
+  root 'home#welcome'
+
+  get 'dashboard'          => 'home#index',      as: :dashboard
+  post   "oauth/callback"  => "oauths#callback"
+  get    "oauth/callback"  => "oauths#callback" # for use with Github, Facebook
+  get    "oauth/:provider" => "oauths#oauth",    as: :auth_at_provider
+  delete "oauth/:provider" => "oauths#destroy",  as: :delete_oauth
+  get  'login'      => 'user_sessions#new',      as: :login
+  post 'logout'     => 'user_sessions#destroy',  as: :logout
+  get  'signup'     => 'users#new',              as: :signup
   post "check_card" => "home#check_card"
+
+  resources :user_sessions
+  resources :users, except: [:index, :show]
+  resources :cards
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

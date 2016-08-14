@@ -3,8 +3,9 @@ class Card < ActiveRecord::Base
 
   before_create :set_review_date
   validates :original_text, :translated_text, :user_id, presence: true
-  validates :original_text, uniqueness: { message: "Данное слово уже есть в базе" }
+  validates_uniqueness_of :original_text, :scope => :user_id, :case_sensitive => false
   validate :validate_match
+
 
   def self.random_card
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
@@ -20,8 +21,8 @@ class Card < ActiveRecord::Base
 
   def validate_match
     if original_text.downcase.strip == translated_text.downcase.strip
-      errors[:original_text] = "Слова совпадают"
-      errors[:translated_text] = "Слова совпадают"
+      errors[:original_text] = "Words match"
+      errors[:translated_text] = "Words match"
     end
   end
 
