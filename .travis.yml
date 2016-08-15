@@ -9,6 +9,3 @@ before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
   - bin/rake db:migrate RAILS_ENV=test
-test:
-  aws_access_key_id: PPPAIXBPPP5USUHDZ5QA
-  aws_secret_access_key: s8KO49LLLLLrM1bЗЗЗЗЗpUH87oYQYP1kWGNNqns8
