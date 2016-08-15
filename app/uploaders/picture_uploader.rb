@@ -1,5 +1,4 @@
 # encoding: utf-8
-
 class PictureUploader < CarrierWave::Uploader::Base
 
   # Include RMagick or MiniMagick support:
@@ -27,7 +26,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   #
-  process :resize_to_fit => [360, 360]
+  process resize_to_fit: [360, 360]
   # def scale(width, height)
   #   # do something
   # end
@@ -48,5 +47,4 @@ class PictureUploader < CarrierWave::Uploader::Base
   # def filename
   #   "something.jpg" if original_filename
   # end
-
 end
