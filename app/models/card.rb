@@ -6,6 +6,7 @@ class Card < ActiveRecord::Base
   validates_uniqueness_of :original_text, :scope => :user_id, :case_sensitive => false
   validate :validate_match
 
+  mount_uploader :picture, PictureUploader
 
   def self.random_card
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first

@@ -6,6 +6,8 @@
       </div>
       <div class="panel-body">
         <h3 class="panel-title"><%= @card.translated_text %></h3>
+        <br>
+        <%= image_tag @card.picture.url if @card.picture? %>
       </div>
       <div class="panel-footer">
         <p><%= @card.review_date.strftime("%d/%m/%Y") %></p>

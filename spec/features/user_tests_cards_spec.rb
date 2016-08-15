@@ -9,7 +9,7 @@ describe "Main", type: :feature do
     end
     before do
       visit login_url
-            #  byebug
+      # byebug
       fill_in 'Email', with: 'test@example.com'
       fill_in 'Password', with: 'foobar'
       click_button 'Log In'
