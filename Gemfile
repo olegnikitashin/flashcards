@@ -32,6 +32,12 @@ gem 'simple_form'
 gem 'sorcery'
 
 gem "font-awesome-rails"
+
+gem 'carrierwave'
+gem 'mini_magick'
+gem "fog-aws"
+
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

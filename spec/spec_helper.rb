@@ -26,6 +26,12 @@ RSpec.configure do |config|
   #   add this to the spec_helper.rb
   # config.infer_spec_type_from_file_location!
 
+  config.after(:each) do
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
+    end
+  end
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
