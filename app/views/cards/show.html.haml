@@ -12,7 +12,7 @@
         %p
           Deck: #{@card.deck.title}
     .col-md-6.col-md-offset-3
-      .btn-group{"aria-label" => "...", :role => "group"}
+      .btn-group{ "aria-label" => "...", :role => "group" }
         = link_to 'Редактировать', edit_card_path(@card), class: "btn btn-default btn-sm"
         = link_to 'Удалить', card_path(@card), method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-default btn-sm"
         = link_to 'Назад', cards_path, class: "btn btn-default btn-sm"

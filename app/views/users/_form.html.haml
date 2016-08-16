@@ -5,7 +5,7 @@
   = f.submit (f.object.new_record? ? 'Create' : 'Update'), class: 'btn btn-default'
 - unless current_user
   .form-group.text-center
-    %label{:for => "social_icons"} Connect with:
+    %label{ for: "social_icons" } Connect with:
     %div
       - %w(github facebook twitter).map do |link|
         = link_to auth_at_provider_path(provider: link) do
