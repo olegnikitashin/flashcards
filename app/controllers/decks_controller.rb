@@ -17,7 +17,7 @@ class DecksController < ApplicationController
 
     if @deck.save
       redirect_to decks_path
-      flash[:notice] = 'Card deck was created!'
+      flash[:notice] = "Card deck #{@deck.title} was created!"
     else
       render 'new'
     end
