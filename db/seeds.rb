@@ -10,8 +10,9 @@ require 'nokogiri'
 require 'open-uri'
 
 user1 = User.create(email: "test1@example.com", password: "foobar", password_confirmation: "foobar")
+deck1 = Deck.create(title: "German words", user_id: user1.id)
 
-1.upto(10) do |pagenum|
+1.upto(5) do |pagenum|
   page_url = "http://www.languagedaily.com/learn-german/vocabulary/common-german-words-#{pagenum}"
 
   begin
@@ -26,15 +27,9 @@ user1 = User.create(email: "test1@example.com", password: "foobar", password_con
 
     words = Hash[word_parse.zip description_parse]
 
-    # words.each do |word, definition|
-    #   if definition.text.to_s.length > 2
-    #     Card.create(original_text: word.text, translated_text: definition.text, review_date: Time.now, user_id: user1)
-    #   end
-    # end
-
     words.each do |word, definition|
       if definition.text.to_s.length > 2
-        user1.cards.create(original_text: word.text, translated_text: definition.text, review_date: Time.now)
+        user1.cards.create(original_text: word.text, translated_text: definition.text, review_date: Time.now, deck_id: user1.id)
       end
     end
 

@@ -1,0 +1,45 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Флешкарточкер
+    / Latest compiled and minified CSS
+    %link{:crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :rel => "stylesheet"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    / Latest compiled and minified JavaScript
+    %script{:crossorigin => "anonymous", :integrity => "sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa", :src => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"}
+    = csrf_meta_tags
+  %body
+    %nav.navbar.navbar-default
+      .container
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to 'Флешкарточкер', dashboard_path, id: 'logo', class: 'navbar-brand'
+        / Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          - if logged_in?
+            %ul.nav.navbar-nav
+              %li= link_to 'All decks', decks_path
+              %li= link_to 'All cards', cards_path
+              %li= link_to 'Add deck', new_deck_path
+              %li= link_to 'Add card', new_card_path
+          %ul.nav.navbar-nav.navbar-right
+            - if current_user
+              %li= link_to 'Edit Profile', edit_user_path(current_user.id)
+              %li= link_to 'Logout', :logout, method: :post
+            - else
+              %li= link_to 'Signup', new_user_path
+              %li= link_to 'Login', :login
+        / /.navbar-collapse
+      / /.container-fluid
+    .container
+      - flash.each do |name, msg|
+        %div{:class => "alert alert-#{name}"}
+          = msg
+      = yield

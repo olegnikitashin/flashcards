@@ -1,0 +1,18 @@
+.row
+  .col-md-4.col-md-offset-4
+    - if @decks.empty?
+      %h3
+        There are no decks yet! Please create one!
+        %h3
+    - else
+      - @decks.each do |deck|
+        .panel.panel-default
+          .panel-heading
+            %h1.panel-title= link_to deck.title, deck
+          .panel-body
+            %h3.panel-title
+            = pluralize(deck.cards.length, 'card')
+          - if deck.current?
+            .panel-footer
+              %h3.panel-title
+                %span.glyphicon.glyphicon-ok
