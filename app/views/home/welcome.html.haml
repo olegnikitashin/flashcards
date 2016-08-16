@@ -1,0 +1,14 @@
+.jumbotron
+  .row
+    .col-md-6.col-md-offset-3
+      %form
+        .form-group.text-center
+          %h3
+            You can #{link_to 'Login', :login} or #{link_to 'Signup', new_user_path} to start learning new words!
+        .form-group.text-center
+          %label{:for => "social_icons"} Connect with:
+          %div
+            - %w(facebook twitter github).map do |link|
+              = link_to auth_at_provider_path(provider: link) do
+                = fa_stacked_icon link, base: "square-o", class: "fa-2x"
+  %br/

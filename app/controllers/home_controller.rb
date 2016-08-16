@@ -5,7 +5,13 @@ class HomeController < ApplicationController
   end
 
   def index
-    @random_card = current_user.cards.random_card
+    @random_card = if current_user && current_user.decks.find_current_deck.nil?
+      current_user.cards.random_card
+    elsif current_user && !current_user.decks.find_current_deck.nil?
+      current_user.decks.find_current_deck.cards.random_card
+    else
+      nil
+    end
   end
 
   def check_card

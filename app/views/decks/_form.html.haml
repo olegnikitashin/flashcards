@@ -1,0 +1,4 @@
+= simple_form_for(@deck, html: { class: 'form-horizontal' }) do |f|
+  = f.input :title, label: 'Deck title', input_html: { class: 'form-control' }
+  = f.submit (f.object.new_record? ? 'Create deck' : 'Edit deck'), class: 'btn btn-default'
+  = link_to 'Back', decks_path, class: "btn btn-default"

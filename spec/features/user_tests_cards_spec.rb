@@ -2,9 +2,10 @@ require 'rails_helper'
 
 describe "Main", type: :feature do
   describe 'User tests cards' do
+    let!(:user) { create :user }
+    let!(:deck) { create(:deck, user: user) }
     let!(:card) do
-      user = create(:user)
-      card = create(:card, user: user)
+      card = create(:card, user: user, deck: deck)
       card.update_attributes(review_date: Date.today.days_ago(3))
     end
     before do

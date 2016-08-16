@@ -12,8 +12,14 @@ Rails.application.routes.draw do
   get  'signup'     => 'users#new',              as: :signup
   post "check_card" => "home#check_card"
 
+
   resources :user_sessions
   resources :users, except: [:index, :show]
+  resources :decks do
+    member do
+      put 'make_current'
+    end
+  end
   resources :cards
 
   # The priority is based upon order of creation: first created -> highest priority.

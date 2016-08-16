@@ -1,0 +1,18 @@
+.row
+  .col-md-6.col-md-offset-3
+    .panel.panel-default
+      .panel-heading
+        %h1.panel-title= @card.original_text
+      .panel-body
+        %h3.panel-title= @card.translated_text
+        %br/
+        = image_tag @card.picture.url if @card.picture?
+      .panel-footer
+        %p= @card.review_date.strftime("%d/%m/%Y")
+        %p
+          Deck: #{@card.deck.title}
+    .col-md-6.col-md-offset-3
+      .btn-group{ "aria-label" => "...", :role => "group" }
+        = link_to 'Редактировать', edit_card_path(@card), class: "btn btn-default btn-sm"
+        = link_to 'Удалить', card_path(@card), method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-default btn-sm"
+        = link_to 'Назад', cards_path, class: "btn btn-default btn-sm"
