@@ -29,7 +29,7 @@ deck1 = Deck.create(title: "German words", user_id: user1.id)
 
     words.each do |word, definition|
       if definition.text.to_s.length > 2
-        user1.cards.create(original_text: word.text, translated_text: definition.text, review_date: Time.now, deck_id: user1.id)
+        user1.cards.create(original_text: word.text, translated_text: definition.text, review_date: Time.now, deck: deck1)
       end
     end
 

@@ -42,10 +42,7 @@ class DecksController < ApplicationController
   end
 
   def make_current
-    Deck.where(current: true).update_all(current: false)
-    @deck.current = !@deck.current
-    @deck.save
-
+    @deck.make_current
     redirect_to @deck
   end
 

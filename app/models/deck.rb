@@ -8,4 +8,9 @@ class Deck < ActiveRecord::Base
   def self.find_current_deck
     find_by(current: true)
   end
+
+  def make_current
+    Deck.where(current: true, user: user).update_all(current: false)
+    update(current: !current)
+  end
 end
