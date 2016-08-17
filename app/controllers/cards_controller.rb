@@ -16,7 +16,8 @@ class CardsController < ApplicationController
     @card = current_user.cards.new(card_params)
 
     if @card.save
-      redirect_to @card, notice: 'Карточка успешно сохранена!'
+      redirect_to @card
+      flash[:notice] = 'Card was successfully saved!'
     else
       render 'new'
     end
@@ -26,8 +27,9 @@ class CardsController < ApplicationController
   end
 
   def update
-    if current_user.cards.update(card_params)
-      redirect_to @card, notice: 'Карточка успешно отредактирована!'
+    if @card.update(card_params)
+      redirect_to @card
+      flash[:notice] = 'Card was successfully updated!'
     else
       render :edit
     end
@@ -35,7 +37,8 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to cards_path, notice: 'Карточка успешно удалена!'
+    redirect_to cards_path
+    flash[:notice] = 'Card was deleted!'
   end
 
   private
@@ -45,6 +48,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :picture, :deck_id)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :picture, :deck_id)
   end
 end

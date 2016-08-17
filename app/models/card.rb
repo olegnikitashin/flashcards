@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
   belongs_to :deck
 
   before_create :set_review_date
-  validates :original_text, :translated_text, :user_id, :deck_id, presence: true
+  validates :original_text, :translated_text, :review_date, :user_id, :deck_id, presence: true
   validates_uniqueness_of :original_text, scope: :user_id, case_sensitive: false
   validate :validate_match
 
