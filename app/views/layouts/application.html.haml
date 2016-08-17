@@ -2,7 +2,7 @@
 %html
   %head
     %meta{ :content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type" }/
-    %title Флешкарточкер
+    %title Flashcards
     / Latest compiled and minified CSS
     %link{ :crossorigin => "anonymous", :href => "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", :integrity => "sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", :rel => "stylesheet" }/
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
@@ -20,7 +20,7 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to 'Флешкарточкер', dashboard_path, id: 'logo', class: 'navbar-brand'
+          = link_to 'Flashcards', dashboard_path, id: 'logo', class: 'navbar-brand'
         / Collect the nav links, forms, and other content for toggling
         .collapse.navbar-collapse#bs-example-navbar-collapse-1
           - if logged_in?

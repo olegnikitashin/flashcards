@@ -5,7 +5,7 @@ describe "Main", type: :feature do
     let!(:user) { create :user }
     let!(:deck) { create(:deck, user: user) }
     let!(:card) do
-      card = create(:card, user: user, deck: deck)
+      card = create(:card, user: user, deck: deck, review_date: Date.today)
       card.update_attributes(review_date: Date.today.days_ago(3))
     end
     before do

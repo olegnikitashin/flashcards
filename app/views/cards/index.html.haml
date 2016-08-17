@@ -1,20 +1,21 @@
 .row
-  .col-md-4.col-md-offset-4
+  .col-md-12
     - if @cards.empty?
       %h3
         There are no cards in your library yet!
         %h3
     - else
       - @cards.each do |card|
-        .panel.panel-default
-          .panel-heading
-            %h1.panel-title= link_to card.original_text, card
-          .panel-body
-            %h3.panel-title= card.translated_text
-          .panel-footer
-            %p
-              Review date: #{card.review_date.strftime("%d/%m/%Y")}
-            %hr/
-            %p
-              Deck: #{card.deck.title}
-        %br/
+        .col-md-4
+          .panel.panel-default
+            .panel-heading
+              %h1.panel-title= link_to card.original_text, card
+            .panel-body
+              %h3.panel-title= card.translated_text
+            .panel-footer
+              %p
+                Review date: #{card.review_date.strftime("%d/%m/%Y")}
+              %hr/
+              %p
+                Deck: #{card.deck.title}
+          %br/
