@@ -43,16 +43,4 @@ describe Card do
     )
     expect(card.errors[:original_text]).to include("Words match")
   end
-
-  it "updates the review date" do
-    card = Card.create(
-      original_text: "Beer",
-      translated_text: "beer",
-      review_date: Date.today,
-      user: user,
-      deck: deck
-    )
-    card.update_date
-    expect(card.review_date).to eq Date.today + 3
-  end
 end

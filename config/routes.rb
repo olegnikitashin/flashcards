@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'logout'     => 'user_sessions#destroy',  as: :logout
   get  'signup'     => 'users#new',              as: :signup
   post "check_card" => "home#check_card"
-
+  put 'reset_revisions' => 'cards#reset_revisions', as: :reset
 
   resources :user_sessions
   resources :users, except: [:index, :show]
