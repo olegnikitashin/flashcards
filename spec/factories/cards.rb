@@ -5,5 +5,7 @@ FactoryGirl.define do
     attempts 3
     revisions 0
     review_date Date.today
+    user
+    deck
   end
 end
