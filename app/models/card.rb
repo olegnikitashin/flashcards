@@ -25,7 +25,7 @@ class Card < ActiveRecord::Base
   end
 
   def increase_count
-    update(attempts: 3, revisions: revisions + 1) unless revisions > 6
+    update(attempts: 3, revisions: revisions + 1)
     update(attempts: 3, revisions: 0) if revisions > 6
   end
 
@@ -39,20 +39,20 @@ class Card < ActiveRecord::Base
   def set_review_date
     date = Date.today + case revisions
                         when 0
-                          0
+                          INTERVAL_HOURS[0]
                         when 1
-                          12.hours
+                          INTERVAL_HOURS[1]
                         when 2
-                          3.days
+                          INTERVAL_HOURS[2]
                         when 3
-                          7.days
+                          INTERVAL_HOURS[3]
                         when 4
-                          14.days
+                          INTERVAL_HOURS[4]
                         when 5
-                          30.days
+                          INTERVAL_HOURS[5]
                         when 6
-                          90.days
-                      end
+                          INTERVAL_HOURS[6]
+                        end
     self.review_date = date
   end
 end
