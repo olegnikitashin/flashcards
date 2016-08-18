@@ -21,11 +21,10 @@ class HomeController < ApplicationController
     if @card.words_equal?(@input_text)
       @card.increase_count
       flash[:info] = "Correct translation. Well done!"
-      redirect_to dashboard_path
     else
       @card.decrease_count
       flash[:danger] = "Incorrect translation. Please review the word!"
-      redirect_to dashboard_path
     end
+    redirect_to dashboard_path
   end
 end
