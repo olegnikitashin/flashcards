@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Card do
   let(:user) { create :user }
-  let(:deck) { create(:deck, user: user)}
+  let(:deck) { create(:deck, user: user) }
   let(:card) { create(:card, deck: deck, user: user) }
   it "is valid with an original_text, translated_text and review_date" do
     card = Card.new(
@@ -70,9 +70,7 @@ describe Card do
     end
   end
   describe '#set_review_date' do
-    keys = [0,1,2,3,4,5,6]
-    revisions_days = Hash[keys.map{ |key| [key, INTERVAL_HOURS[key]]}]
-    revisions_days.each_pair do |revisions, days|
+    Card::INTERVAL_HOURS.each_pair do |revisions, days|
       it 'will increase review_date according to revisions number' do
         card.update(revisions: revisions)
         expect(card.review_date).to eq Date.today + days

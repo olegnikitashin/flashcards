@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Deck do
   let(:user) { create :user }
-  let(:deck) { create(:deck, user: user)}
+  let(:deck) { create(:deck, user: user) }
   it "becomes current if Make current is selected" do
     deck.make_current
     expect(deck.current).to eq true

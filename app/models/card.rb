@@ -1,4 +1,5 @@
 class Card < ActiveRecord::Base
+
   belongs_to :user
   belongs_to :deck
 
@@ -8,6 +9,9 @@ class Card < ActiveRecord::Base
   validate :validate_match
 
   mount_uploader :picture, PictureUploader
+
+  # Hours between reviews
+  INTERVAL_HOURS = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 7.days, 4 => 14.days, 5 => 30.days , 6 => 90.days }.freeze
 
   def self.random_card
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
@@ -37,6 +41,7 @@ class Card < ActiveRecord::Base
   private
 
   def set_review_date
+
     date = Date.today + case revisions
                         when 0
                           INTERVAL_HOURS[0]
