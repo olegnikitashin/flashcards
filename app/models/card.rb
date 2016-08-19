@@ -8,10 +8,11 @@ class Card < ActiveRecord::Base
   validates_uniqueness_of :original_text, scope: :user_id, case_sensitive: false
   validate :validate_match
 
+
   mount_uploader :picture, PictureUploader
 
   # Hours between reviews
-  INTERVAL_HOURS = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 7.days, 4 => 14.days, 5 => 30.days , 6 => 90.days }.freeze
+  INTERVAL_HOURS = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 7.days, 4 => 14.days, 5 => 30.days , 6 => 90.days, 7 => 0 }.freeze
 
   def self.random_card
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
@@ -30,7 +31,7 @@ class Card < ActiveRecord::Base
 
   def increase_count
     update(attempts: 3, revisions: revisions + 1)
-    update(attempts: 3, revisions: 0) if revisions > 6
+    update!(attempts: 3, revisions: 0) if revisions > 6
   end
 
   def decrease_count
@@ -41,23 +42,6 @@ class Card < ActiveRecord::Base
   private
 
   def set_review_date
-
-    date = Date.today + case revisions
-                        when 0
-                          INTERVAL_HOURS[0]
-                        when 1
-                          INTERVAL_HOURS[1]
-                        when 2
-                          INTERVAL_HOURS[2]
-                        when 3
-                          INTERVAL_HOURS[3]
-                        when 4
-                          INTERVAL_HOURS[4]
-                        when 5
-                          INTERVAL_HOURS[5]
-                        when 6
-                          INTERVAL_HOURS[6]
-                        end
-    self.review_date = date
+    self.review_date = Date.today + INTERVAL_HOURS[revisions]
   end
 end

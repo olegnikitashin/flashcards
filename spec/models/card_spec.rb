@@ -53,6 +53,9 @@ describe Card do
       card.update(attempts: 1, revisions: 0)
       card.increase_count
       expect(card.attempts).to eq 3
+      card.update(attempts: 3, revisions: 6)
+      card.increase_count
+      expect(card.revisions).to eq 0
     end
   end
 
