@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy]
+  before_action :set_card, only: [:show, :edit, :update, :destroy, :reset_revisions]
 
   def index
     @cards = current_user.cards.order(created_at: :desc)
@@ -16,8 +16,8 @@ class CardsController < ApplicationController
     @card = current_user.cards.new(card_params)
 
     if @card.save
-      redirect_to @card
       flash[:notice] = 'Card was successfully saved!'
+      redirect_to @card
     else
       render 'new'
     end
@@ -28,8 +28,8 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      redirect_to @card
       flash[:notice] = 'Card was successfully updated!'
+      redirect_to @card
     else
       render :edit
     end
@@ -37,8 +37,13 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    redirect_to cards_path
     flash[:notice] = 'Card was deleted!'
+    redirect_to cards_path
+  end
+
+  def reset_revisions
+    @card.update(revisions: 0)
+    redirect_to @card
   end
 
   private
@@ -48,6 +53,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :picture, :deck_id)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :picture, :deck_id, :revisions)
   end
 end
