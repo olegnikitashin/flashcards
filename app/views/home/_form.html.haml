@@ -11,5 +11,10 @@
     .panel-footer
       %h4 Attempts left: #{@random_card.attempts}
       %h4 Revision number: #{@random_card.revisions}
+      - if @random_card.errors.any?
+        %h2 Errors:
+        %ul
+        - @random_card.errors.full_messages do |message|
+          %li= message
 - else
   %p All of the cards have been revised! Well done!
