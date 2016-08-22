@@ -17,10 +17,12 @@ class HomeController < ApplicationController
   def check_card
     @card = current_user.cards.find(params[:card][:id])
     @input_text = params[:card][:input_text]
-
-    if @card.words_equal?(@input_text)
+    if @card.levenshtein_check(@input_text) == 0
       @card.increase_count
-      flash[:info] = "Correct translation. Well done!"
+      flash[:success] = "Correct translation. Well done!"
+    elsif @card.levenshtein_check(@input_text) <= 2
+      @card.increase_count
+      flash[:warning] = "You were almost right! You entered: #{@input_text.capitalize}, but the correct word is #{@card.original_text.capitalize}!"
     else
       @card.decrease_count
       flash[:danger] = "Incorrect translation. Please review the word!"

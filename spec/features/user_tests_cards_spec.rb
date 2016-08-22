@@ -27,5 +27,11 @@ describe "Main", type: :feature do
       click_button 'Check'
       expect(page).to have_content 'Incorrect translation. Please review the word!'
     end
+    it 'will return: Correct translation. Well done! if the user misspelled one character is correct' do
+      visit :dashboard
+      fill_in 'Translation', with: 'Dorr'
+      click_button 'Check'
+      expect(page).to have_content 'You were almost right!'
+    end
   end
 end

@@ -18,8 +18,8 @@ class Card < ActiveRecord::Base
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
   end
 
-  def words_equal?(input_text)
-    original_text.downcase.strip == input_text.downcase.strip
+  def levenshtein_check(input_text)
+    difference = DamerauLevenshtein.distance(original_text.downcase.strip, input_text.downcase.strip)
   end
 
   def validate_match
@@ -30,13 +30,19 @@ class Card < ActiveRecord::Base
   end
 
   def increase_count
-    update(attempts: 3, revisions: revisions + 1)
-    update!(attempts: 3, revisions: 0) if revisions > 6
+    if revisions >= 6
+      update(attempts: 3, revisions: 0)
+    else
+      update(attempts: 3, revisions: revisions + 1)
+    end
   end
 
   def decrease_count
-    update(attempts: attempts - 1)
-    update(attempts: 3, revisions: revisions - 1) if attempts == 0
+    if attempts > 1
+      update(attempts: attempts - 1)
+    else
+      update(attempts: 3, revisions: revisions - 1)
+    end
   end
 
   private
