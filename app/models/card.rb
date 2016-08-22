@@ -18,6 +18,12 @@ class Card < ActiveRecord::Base
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
   end
 
+  def self.expired_cards
+    where('review_date <= ?', Date.today).each do |card|
+      CardsMailer.pending_card_notifications(card.user.email).deliver_now
+    end
+  end
+
   def levenshtein_check(input_text)
     DamerauLevenshtein.distance(original_text.downcase.strip, input_text.downcase.strip)
   end
