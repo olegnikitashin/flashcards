@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Card do
-  let(:user) { create :user }
-  let(:deck) { create(:deck, user: user) }
-  let(:card) { create(:card, deck: deck, user: user) }
+  let!(:user) { create :user }
+  let!(:deck) { create(:deck, user: user) }
+  let!(:card) { create(:card, deck: deck, user: user) }
   it "is valid with an original_text, translated_text and review_date" do
     card = Card.new(
       original_text: 'Bed',
@@ -78,6 +78,13 @@ describe Card do
         card.update(revisions: revisions)
         expect(card.review_date).to eq Date.today + days
       end
+    end
+  end
+  describe '#expired_cards' do
+    it 'will send an email if unrevised cards exist' do
+      ActionMailer::Base.deliveries = []
+      Card.expired_cards
+      expect(ActionMailer::Base.deliveries.count).to eq 1
     end
   end
 end

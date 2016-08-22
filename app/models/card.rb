@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, :user_id, :deck_id, presence: true
   validates_uniqueness_of :original_text, scope: :user_id, case_sensitive: false
   validate :validate_match
-
+  scope :expired, -> { where('review_date <= ?', Date.today) }
 
   mount_uploader :picture, PictureUploader
 
@@ -16,6 +16,12 @@ class Card < ActiveRecord::Base
 
   def self.random_card
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
+  end
+
+  def self.expired_cards
+    User.joins(:cards).merge(Card.expired).uniq.each do |user|
+      CardsMailer.pending_card_notifications(user).deliver_now
+    end
   end
 
   def levenshtein_check(input_text)
