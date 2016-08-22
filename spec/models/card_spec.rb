@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe Card do
-  let(:user) { create :user }
-  let(:deck) { create(:deck, user: user) }
-  let(:card) { create(:card, deck: deck, user: user) }
+  let!(:user) { create :user }
+  let!(:deck) { create(:deck, user: user) }
+  let!(:card) { create(:card, deck: deck, user: user) }
   it "is valid with an original_text, translated_text and review_date" do
     card = Card.new(
       original_text: 'Bed',
@@ -81,9 +81,6 @@ describe Card do
     end
   end
   describe '#expired_cards' do
-    let!(:card) do
-      card.update_attributes(review_date: Date.today.days_ago(3))
-    end
     it 'will send an email if unrevised cards exist' do
       ActionMailer::Base.deliveries = []
       Card.expired_cards
