@@ -80,4 +80,14 @@ describe Card do
       end
     end
   end
+  describe '#expired_cards' do
+    let!(:card) do
+      card.update_attributes(review_date: Date.today.days_ago(3))
+    end
+    it 'will send an email if unrevised cards exist' do
+      ActionMailer::Base.deliveries = []
+      Card.expired_cards
+      expect(ActionMailer::Base.deliveries.count).to eq 1
+    end
+  end
 end

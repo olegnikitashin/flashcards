@@ -1,6 +1,6 @@
 class CardsMailer < ApplicationMailer
-  def pending_card_notifications(email)
-    @email = email
+  def pending_card_notifications(user)
+    @email = user.email
     mail to: @email,
          subject: 'You have unrevised cards!'
   end

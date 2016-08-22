@@ -7,7 +7,7 @@ class Card < ActiveRecord::Base
   validates :original_text, :translated_text, :review_date, :user_id, :deck_id, presence: true
   validates_uniqueness_of :original_text, scope: :user_id, case_sensitive: false
   validate :validate_match
-
+  scope :expired, -> { where('review_date <= ?', Date.today) }
 
   mount_uploader :picture, PictureUploader
 
@@ -19,8 +19,8 @@ class Card < ActiveRecord::Base
   end
 
   def self.expired_cards
-    where('review_date <= ?', Date.today).each do |card|
-      CardsMailer.pending_card_notifications(card.user.email).deliver_now
+    User.joins(:cards).merge(Card.expired).uniq.each do |user|
+      CardsMailer.pending_card_notifications(user).deliver_now
     end
   end
 
