@@ -19,7 +19,7 @@ class Card < ActiveRecord::Base
   end
 
   def levenshtein_check(input_text)
-    difference = DamerauLevenshtein.distance(original_text.downcase.strip, input_text.downcase.strip)
+    DamerauLevenshtein.distance(original_text.downcase.strip, input_text.downcase.strip)
   end
 
   def validate_match
