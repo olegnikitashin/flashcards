@@ -5,11 +5,9 @@ RSpec.describe CardsMailer, type: :mailer do
     let!(:user) { create :user }
     let!(:deck) { create(:deck, user: user) }
     let!(:card) do
-      card = create(:card, user: user, deck: deck, review_date: Date.today)
-      card.update_attributes(review_date: Date.today.days_ago(3))
+      card = create(:card, user: user, deck: deck)
     end
-    let!(:mail) { CardsMailer.pending_card_notifications(user)}
-
+    let!(:mail) { CardsMailer.pending_card_notifications(user) }
     it 'renders the subject' do
       expect(mail.subject).to have_content 'You have unrevised cards!'
     end

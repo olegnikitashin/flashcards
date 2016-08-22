@@ -9,7 +9,7 @@ class HomeController < ApplicationController
       if current_user.decks.find_current_deck.nil?
         current_user.cards.random_card
       else
-      current_user.decks.find_current_deck.cards.random_card
+        current_user.decks.find_current_deck.cards.random_card
       end
     end
   end
