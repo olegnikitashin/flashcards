@@ -9,20 +9,20 @@
         = image_tag @card.picture.url if @card.picture?
       .panel-footer
         %p
-          = t('view.next_review_date')
+          = t('.next_review_date')
           = @card.review_date.strftime("%d/%m/%Y")
         %p
-          = t('view.attempts_left')
+          = t('.attempts_left')
           = @card.attempts
         %p
-          = t('view.revision_number')
+          = t('.revision_number')
           = @card.revisions
         %p
-          = t('view.deck')
+          = t('.deck_name')
           = @card.deck.title
     .col-md-8.col-md-offset-3
       .btn-group{ "aria-label" => "...", :role => "group" }
-        = link_to t('view.reset_revisions'), reset_path(id: @card), method: :put, class: "btn btn-default btn-sm"
-        = link_to t('view.edit_card_path'), edit_card_path(@card), class: "btn btn-default btn-sm"
-        = link_to t('view.delete_card_path'), card_path(@card), method: :delete, data: { confirm: t('view.confirmation') }, class: "btn btn-default btn-sm"
-        = link_to t('view.back'), cards_path, class: "btn btn-default btn-sm"
+        = link_to t('.reset_revisions'), reset_path(id: @card), method: :put, class: "btn btn-default btn-sm"
+        = link_to t('.edit_card_path'), edit_card_path(@card), class: "btn btn-default btn-sm"
+        = link_to t('.delete_card_path'), card_path(@card), method: :delete, data: { confirm: t('.confirmation') }, class: "btn btn-default btn-sm"
+        = link_to t('back'), cards_path, class: "btn btn-default btn-sm"

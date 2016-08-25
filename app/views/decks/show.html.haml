@@ -6,16 +6,16 @@
         - if @deck.current
           %span.glyphicon.glyphicon-ok
     .btn-group{ "aria-label" => "...", :role => "group" }
-      = link_to t('view.edit'), edit_deck_path(@deck), class: 'btn btn-default btn-sm'
-      = link_to t('view.delete'), deck_path(@deck), method: :delete, data: { confirm: t('view.confirmation') }, class: 'btn btn-default btn-sm'
-      = link_to (@deck.current? ? t('view.deselect') : t('view.make_current')), make_current_deck_path(@deck), method: :put, class: 'btn btn-default btn-sm'
-      = link_to t('view.back'), decks_path, class: 'btn btn-default btn-sm'
+      = link_to t('.edit_deck'), edit_deck_path(@deck), class: 'btn btn-default btn-sm'
+      = link_to t('.delete_deck'), deck_path(@deck), method: :delete, data: { confirm: t('.confirmation') }, class: 'btn btn-default btn-sm'
+      = link_to (@deck.current? ? t('deselect') : t('make_current')), make_current_deck_path(@deck), method: :put, class: 'btn btn-default btn-sm'
+      = link_to t('back'), decks_path, class: 'btn btn-default btn-sm'
 
     %br/
     %br/
 
     - if @deck.cards.empty?
-      %h3= t('view.no_cards_deck')
+      %h3= t('.no_cards_deck')
     - else
       - @deck.cards.each do |card|
         .panel.panel-default

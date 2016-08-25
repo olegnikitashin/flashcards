@@ -1,7 +1,7 @@
 .row
   .col-md-12
     - if @decks.empty?
-      %h3= t('view.no_decks')
+      %h3= t('.no_decks')
     - else
       - @decks.each do |deck|
         .col-md-4
@@ -10,7 +10,7 @@
               %h1.panel-title= link_to deck.title, deck
             .panel-body
               %h3.panel-title
-                = t('view.card_number')
+                = t('.card_number')
                 = deck.cards.length
             - if deck.current?
               .panel-footer

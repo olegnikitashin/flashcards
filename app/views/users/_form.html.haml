@@ -1,13 +1,13 @@
 = simple_form_for @user do |f|
-  = f.input :email, label: t('view.email'), input_html: { class: 'form-control' }
-  = f.input :password, label: t('view.password'), input_html: { class: 'form-control' }
-  = f.input :password_confirmation, label: t('view.password_confirmation'), input_html: { class: 'form-control' }
-  = f.input :language, collection: I18n.available_locales, label: t('view.language')
-  = f.submit (f.object.new_record? ? t('view.create_user') : t('view.update_user')), class: 'btn btn-default'
+  = f.input :email, label: t('.email'), input_html: { class: 'form-control' }
+  = f.input :password, label: t('.password'), input_html: { class: 'form-control' }
+  = f.input :password_confirmation, label: t('.password_confirmation'), input_html: { class: 'form-control' }
+  = f.input :language, collection: I18n.available_locales, label: t('language')
+  = f.submit (f.object.new_record? ? t('create_user') : t('update_user')), class: 'btn btn-default'
 - unless current_user
   .form-group.text-center
     %label{ for: "social_icons" }
-      = t('view.connect')
+      = t('.connect')
     %div
       - %w(github facebook twitter).map do |link|
         = link_to auth_at_provider_path(provider: link) do
@@ -15,10 +15,10 @@
 - else
   .text-center
     - if current_user.has_linked_github?
-      = link_to t('view.unlink_github'), delete_oauth_path('github'), method: :delete, data: { confirm: t('view.confirmation') }
+      = link_to t('.unlink_github'), delete_oauth_path('github'), method: :delete, data: { confirm: t('.confirmation') }
     - elsif current_user.has_linked_facebook?
-      = link_to t('view.unlink_facebook'), delete_oauth_path('facebook'), method: :delete, data: { confirm: t('view.confirmation') }
+      = link_to t('.unlink_facebook'), delete_oauth_path('facebook'), method: :delete, data: { confirm: t('.confirmation') }
     - elsif current_user.has_linked_twitter?
-      = link_to t('view.unlink_twitter'), delete_oauth_path('twitter'), method: :delete, data: { confirm: t('view.confirmation') }
+      = link_to t('.unlink_twitter'), delete_oauth_path('twitter'), method: :delete, data: { confirm: t('.confirmation') }
     - else
-      = link_to t('view.delete_user'), user_path, method: :delete, data: { confirm: t('view.confirmation') }
+      = link_to t('.delete_user'), user_path, method: :delete, data: { confirm: t('.confirmation') }

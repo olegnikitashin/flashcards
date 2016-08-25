@@ -10,10 +10,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       auto_login(@user)
-      flash[:success] = t('user.success_create', user: @user.email)
+      flash[:success] = t('.success_create', user: @user.email)
       redirect_to :dashboard
     else
-      flash.now[:danger] = t('user.failed_create')
+      flash.now[:danger] = t('.failed_create')
       render 'new'
     end
   end
@@ -23,17 +23,17 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      flash[:success] = t('user.success_update', user: @user.email)
+      flash[:success] = t('.success_update', user: @user.email)
       redirect_to :dashboard
     else
-      flash.now[:danger] = t('user.failed_update', user: @user.email)
+      flash.now[:danger] = t('.failed_update', user: @user.email)
       render 'edit'
     end
   end
 
   def destroy
     @user.destroy
-    flash[:success] = t('user.success_delete', user: @user.email)
+    flash[:success] = t('.success_delete', user: @user.email)
     redirect_to root_path
   end
 

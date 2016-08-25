@@ -5,15 +5,15 @@
     .panel-body
       = simple_form_for :card, url: :check_card do |f|
         = image_tag @random_card.picture.url if @random_card.picture?
-        = f.input :input_text, label: t('view.translation'), input_html: { class: 'form-control' }, required: true
-        = f.button :submit, t('view.check'), input_html:{ class: 'btn btn-default' }
+        = f.input :input_text, label: t('.translation'), input_html: { class: 'form-control' }, required: true
+        = f.button :submit, t('.check'), input_html:{ class: 'btn btn-default' }
         = f.hidden_field :id, value: @random_card.id
     .panel-footer
       %h4
-        = t('view.attempts_left')
+        = t('.attempts_left')
         = @random_card.attempts
       %h4
-        = t('view.revision_number')
+        = t('.revision_number')
         = @random_card.revisions
 - else
-  %p= t('view.all_cards_done')
+  %p= t('.all_cards_done')

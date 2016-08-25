@@ -262,97 +262,134 @@ ru:
       long: "%d %B %Y, %H:%M"
       short: "%d %b, %H:%M"
     pm: вечера
+#####
 
-  view:
-    sitename: 'Флешкарточкер'
-    decks_path: 'Все колоды'
-    cards_path: 'Все карточки'
-    new_deck_path: 'Добавить колоду'
-    new_card_path: 'Добавить карточку'
-    edit_user_path: 'Профиль'
-    edit_card_path: 'Редактировать'
-    delete_card_path: 'Удалить'
-    logout_path: 'Выйти'
-    signup_path: 'Регистрация'
-    login_path: 'Вход'
+  sitename: 'Флешкарточкер'
+  edit_card: 'Редактировать карточку'
+  create_card: 'Создать карточку'
+  add_card: 'Добавить карточку'
+  add_deсk: 'Добавить колоду'
+  back: 'Назад'
+  deselect: 'Убрать выделение'
+  make_current: 'Сделать текущей'
+  deck_card: 'Колода'
+  create_user: 'Создать'
+  update_user: 'Обновить'
+  match: 'слова совпадают'
 
-    welcome_message: 'Пожалуйста войдите или зарегистрируйтесь для изучения новых слов!'
-    connect: 'Зайти через:'
-    hello: 'Привет '
-    translation: 'Перевод'
-    check: 'Проверить'
-    attempts_left: 'Попыток осталось:'
-    revision_number: 'Номер проверки:'
-    all_cards_done: 'Все карточки были просмотрены. Так держать!'
-
-  # new card form
-    original_word: 'Оригинал'
-    review_date: 'Дата проверки'
-    picture: 'Изображение'
-    create_card: 'Создать карточку'
-    add_card: 'Добавить карточку'
-    edit_card: 'Редактировать карточку'
-    back: 'Назад'
-    reset_revisions: 'Сбросить проверки'
-    confirmation: 'Вы уверены?'
-    deck_card: 'Колода'
-    
-    no_cards: 'В вашей библиотеке пока что нет карточек!'
-    next_review_date: 'Следующая дата проверки:'
-    deck: 'Колода:'
-    create_desk: 'Создать колоду'
-    edit_desk: 'Редактировать колоду'
-    add_desk: 'Добавить колоду'
-    card: 'карточка'
-    card_number: 'Количество карточек:'
-
-  # decks
-    deck_title: 'Название колоды'
-    no_decks: 'Пока еще нет ни одной колоды!'
-    deselect: 'Убрать выделение'
-    make_current: 'Сделать текущей'
-    no_cards_deck: 'В данной колоде нет карточек!'
-
-  # user
-    email: 'Email:'
-    password: 'Пароль:'
-    password_confirmation: 'Подтверждение пароля:'
-    language: 'Язык интерфейса:'
-    create_user: 'Создать'
-    update_user: 'Обновить'
-    unlink_github: 'Отвязать аккаунт Github'
-    unlink_facebook: 'Отвязать аккаунт Facebook'
-    unlink_twitter: 'Отвязать аккаунт Twitter'
-    delete_user: 'Удалить аккаунт'
-    edit_user: 'Редактировать пользователя'
-    new_user_registration: 'Регистрация'
-
-# controllers
+  layouts:
+    nav:
+      sitename: 'Флешкарточкер'
+      decks_path: 'Все колоды'
+      cards_path: 'Все карточки'
+      new_deck_path: 'Добавить колоду'
+      new_card_path: 'Добавить карточку'
+      edit_user_path: 'Профиль'
+      logout_path: 'Выйти'
+      signup_path: 'Регистрация'
+      login_path: 'Вход'
+  cards:
+    create:
+      success_create: 'Карточка %{card} была успешно создана!'
+    update:
+      success_update: 'Карточка %{card} была успешно обновлена!'
+    destroy:
+      success_delete: 'Карточка %{card} была успешно удалена!'
+    form:
+      original_word: 'Оригинал'
+      translation: 'Перевод'
+      review_date: 'Дата проверки'
+      picture: 'Изображение'
+      create_card: 'Создать карту'
+      edit_card: 'Редактировать карту'
+    index:
+      deck_name: 'Колода:'
+      no_cards: 'В вашей библиотеке пока что нет карточек!'
+      next_review_date: 'Следующая дата проверки:'
+    show:
+      next_review_date: 'Следующая дата проверки:'
+      attempts_left: 'Попыток осталось:'
+      revision_number: 'Номер проверки:'
+      deck_name: 'Колода:'
+      reset_revisions: 'Сбросить проверки'
+      edit_card_path: 'Редактировать'
+      delete_card_path: 'Удалить'
+      confirmation: 'Вы уверены?'
+  decks:
+    form:
+      deck_title: 'Название колоды'
+      create_deck: 'Создать'
+      edit_deck: 'Обновить'
+    index:
+      no_decks: 'Пока еще нет ни одной колоды!'
+      card_number: 'Количество карточек:'
+    show:
+      edit_desk: 'Редактировать'
+      delete_desk: 'Удалить'
+      no_cards_deck: 'В данной колоде нет карточек!'
+      confirmation: 'Вы уверены?'
+    create:
+      success_create: 'Колода %{deck} была успешно создана!'
+    update:
+      success_update: 'Колода %{deck} была успешно обновлена!'
+    destroy:
+      success_delete: 'Колода %{deck} была успешно удалена!'
   home:
-    correct: 'Перевод верный. Молодец!'
-    misspelled: "Перевод неточный! Вы ввели: %{input}, а точный перевод: %{original}!"
-    incorrect: 'Неправильный перевод. Пожалуйста повторите слово!'
-  card:
-    success_create: 'Карточка %{card} была успешно создана!'
-    success_update: 'Карточка %{card} была успешно обновлена!'
-    success_delete: 'Карточка %{card} была успешно удалена!'
-    match: 'слова совпадают'
-  deck:
-    success_create: 'Колода %{deck} была успешно создана!'
-    success_update: 'Колода %{deck} была успешно обновлена!'
-    success_delete: 'Колода %{deck} была успешно удалена!'
-  oauth:
-    success_login: 'Выполнен вход через: %{provider}!'
-    failed_login: 'Не удалось выполнить вход через: %{provider}!'
-    success_unlunk: 'Вы успешно отвязали %{provider} аккаунт.'
-    failed_unlink: 'Ваш профиль не связан с %{provider} аккаунтом.'
-  user_sess:
-    login_success: 'Вы успешно авторизировались!'
-    login_failed: 'Не получилось войти!'
-    logout_success: 'Вы успешно вышли!'
-  user:
-    success_create: 'Пользователь %{user} успешно создан!'
-    failed_create: 'Пользователь не был создан!'
-    success_update: 'Данные пользователя %{user} успешно обновлены!'
-    failed_update: 'Данные пользователя %{user} не были обновлены!'
-    success_delete: 'Пользователь %{user} был удален!'
+    form:
+      translation: 'Перевод'
+      check: 'Проверить'
+      attempts_left: 'Попыток осталось:'
+      revision_number: 'Номер проверки:'
+      all_cards_done: 'Все карточки были просмотрены. Так держать!'
+    index:
+      hello: 'Привет '
+    welcome:
+      welcome_message: 'Пожалуйста войдите или зарегистрируйтесь для изучения новых слов!'
+      connect: 'Зайти через:'
+    check_card:
+      correct: 'Перевод верный. Молодец!'
+      misspelled: "Перевод неточный! Вы ввели: %{input}, а точный перевод: %{original}!"
+      incorrect: 'Неправильный перевод. Пожалуйста повторите слово!'
+  user_sessions:
+    form:
+      email: 'Email:'
+      password: 'Пароль:'
+      login_path: 'Log In'
+    new:
+      login_path: 'Log In'
+    create:
+      login_success: 'Вы успешно авторизировались!'
+      login_failed: 'Не получилось войти!'
+    destroy:
+      logout_success: 'Вы успешно вышли!'
+  users:
+    create:
+      success_create: 'Пользователь %{user} успешно создан!'
+      failed_create: 'Пользователь не был создан!'
+    update:
+      success_update: 'Данные пользователя %{user} успешно обновлены!'
+      failed_update: 'Данные пользователя %{user} не были обновлены!'
+    destroy:
+      success_delete: 'Пользователь %{user} был удален!'
+    new:
+      new_user_registration: 'Регистрация'
+    edit:
+      edit_user: 'Редактировать пользователя'
+    form:
+      email: 'Email:'
+      password: 'Пароль:'
+      password_confirmation: 'Подтверждение пароля:'
+      language: 'Язык интерфейса:'
+      connect: 'Зайти через:'
+      unlink_github: 'Отвязать аккаунт Github'
+      unlink_facebook: 'Отвязать аккаунт Facebook'
+      unlink_twitter: 'Отвязать аккаунт Twitter'
+      delete_user: 'Удалить аккаунт'
+      confirmation: 'Вы уверены?'
+  oauths:
+    callback:
+      success_login: 'Выполнен вход через: %{provider}!'
+      failed_login: 'Не удалось выполнить вход через: %{provider}!'
+    destroy:
+      success_unlunk: 'Вы успешно отвязали %{provider} аккаунт.'
+      failed_unlink: 'Ваш профиль не связан с %{provider} аккаунтом.'
