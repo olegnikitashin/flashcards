@@ -1,5 +1,5 @@
 .row
-  .col-md-6.col-md-offset-3
+  .col-md-8.col-md-offset-2
     .panel.panel-default
       .panel-heading
         %h1.panel-title= @card.original_text
@@ -9,16 +9,20 @@
         = image_tag @card.picture.url if @card.picture?
       .panel-footer
         %p
-          Next review date: #{@card.review_date.strftime("%d/%m/%Y")}
+          = t('view.next_review_date')
+          = @card.review_date.strftime("%d/%m/%Y")
         %p
-          Attempts left: #{@card.attempts}
+          = t('view.attempts_left')
+          = @card.attempts
         %p
-          Revision number: #{@card.revisions}
+          = t('view.revision_number')
+          = @card.revisions
         %p
-          Deck: #{@card.deck.title}
-    .col-md-6.col-md-offset-3
+          = t('view.deck')
+          = @card.deck.title
+    .col-md-8.col-md-offset-3
       .btn-group{ "aria-label" => "...", :role => "group" }
-        = link_to 'Reset revisions', reset_path(id: @card), method: :put, class: "btn btn-default btn-sm"
-        = link_to 'Edit', edit_card_path(@card), class: "btn btn-default btn-sm"
-        = link_to 'Delete', card_path(@card), method: :delete, data: { confirm: 'Вы уверены?' }, class: "btn btn-default btn-sm"
-        = link_to 'Back', cards_path, class: "btn btn-default btn-sm"
+        = link_to t('view.reset_revisions'), reset_path(id: @card), method: :put, class: "btn btn-default btn-sm"
+        = link_to t('view.edit_card_path'), edit_card_path(@card), class: "btn btn-default btn-sm"
+        = link_to t('view.delete_card_path'), card_path(@card), method: :delete, data: { confirm: t('view.confirmation') }, class: "btn btn-default btn-sm"
+        = link_to t('view.back'), cards_path, class: "btn btn-default btn-sm"

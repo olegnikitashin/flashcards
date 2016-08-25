@@ -1,9 +1,7 @@
 .row
   .col-md-12
     - if @cards.empty?
-      %h3
-        There are no cards in your library yet!
-        %h3
+      %h3= t('view.no_cards')
     - else
       - @cards.each do |card|
         .col-md-4
@@ -14,8 +12,10 @@
               %h3.panel-title= card.translated_text
             .panel-footer
               %p
-                Next review date: #{card.review_date.strftime("%d/%m/%Y")}
+                = t('view.next_review_date')
+                = card.review_date.strftime("%d/%m/%Y")
               %hr/
               %p
-                Deck: #{card.deck.title}
+                = t('view.deck')
+                = card.deck.title
           %br/

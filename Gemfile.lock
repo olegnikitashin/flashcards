@@ -57,6 +57,7 @@ GEM
       mime-types (>= 1.16)
       mimemagic (>= 0.3.0)
     chronic (0.10.2)
+    cliver (0.3.2)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -107,6 +108,7 @@ GEM
       activesupport (>= 4.1.0)
     haml (4.0.7)
       tilt
+    http_accept_language (2.0.5)
     i18n (0.7.0)
     ipaddress (0.8.3)
     jbuilder (2.6.0)
@@ -144,6 +146,10 @@ GEM
       rack (>= 1.2, < 3)
     pg (0.17.1)
     pkg-config (1.1.7)
+    poltergeist (1.10.0)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      websocket-driver (>= 0.2.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -236,6 +242,9 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    websocket-driver (0.6.4)
+      websocket-extensions (>= 0.1.0)
+    websocket-extensions (0.1.2)
     whenever (0.9.7)
       chronic (>= 0.6.3)
     xpath (2.0.0)
@@ -257,10 +266,12 @@ DEPENDENCIES
   fog-aws
   font-awesome-rails
   haml
+  http_accept_language
   jbuilder (~> 2.0)
   jquery-rails
   mini_magick
   pg
+  poltergeist
   rails (= 4.2.6)
   rails_12factor
   rspec-rails (~> 3.5)

@@ -16,8 +16,8 @@ class DecksController < ApplicationController
     @deck = current_user.decks.new(deck_params)
 
     if @deck.save
+      flash[:notice] = t('deck.success_create', deck: @deck.title)
       redirect_to decks_path
-      flash[:notice] = "Card deck #{@deck.title} was created!"
     else
       render 'new'
     end
@@ -28,8 +28,8 @@ class DecksController < ApplicationController
 
   def update
     if @deck.update(deck_params)
+      flash[:notice] = t('deck.success_update', deck: @deck.title)
       redirect_to decks_path
-      flash[:notice] = 'Card deck was updated!'
     else
       render 'edit'
     end
@@ -37,8 +37,8 @@ class DecksController < ApplicationController
 
   def destroy
     @deck.destroy
+    flash[:notice] = t('deck.success_delete', deck: @deck.title)
     redirect_to decks_path
-    flash[:notice] = 'Card deck was deleted!'
   end
 
   def make_current

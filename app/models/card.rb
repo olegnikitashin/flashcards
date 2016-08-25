@@ -30,8 +30,8 @@ class Card < ActiveRecord::Base
 
   def validate_match
     if original_text.downcase.strip == translated_text.downcase.strip
-      errors[:original_text] = "Words match"
-      errors[:translated_text] = "Words match"
+      errors[:original_text] = I18n.t('card.match')
+      errors[:translated_text] = I18n.t('card.match')
     end
   end
 

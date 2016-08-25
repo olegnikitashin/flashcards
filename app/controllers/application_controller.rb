@@ -4,4 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :require_login
+  before_action :set_locale
+
+  def default_url_options(options = {})
+    { locale: I18n.locale }.merge options
+  end
+
+  private
+
+  def set_locale
+    I18n.locale = if current_user
+      current_user.language
+    else
+      params[:locale] || http_accept_language.compatible_language_from(I18n.available_locales)
+    end
+  end
 end
