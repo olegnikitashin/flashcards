@@ -16,7 +16,7 @@ class CardsController < ApplicationController
     @card = current_user.cards.new(card_params)
 
     if @card.save
-      flash[:notice] = 'Card was successfully saved!'
+      flash[:success] =  t('.success_create', card: @card.original_text)
       redirect_to @card
     else
       render 'new'
@@ -28,7 +28,7 @@ class CardsController < ApplicationController
 
   def update
     if @card.update(card_params)
-      flash[:notice] = 'Card was successfully updated!'
+      flash[:success] = t('.success_update', card: @card.original_text)
       redirect_to @card
     else
       render :edit
@@ -37,7 +37,7 @@ class CardsController < ApplicationController
 
   def destroy
     @card.destroy
-    flash[:notice] = 'Card was deleted!'
+    flash[:success] = t('.success_delete', card: @card.original_text)
     redirect_to cards_path
   end
 

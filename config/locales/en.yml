@@ -20,4 +20,132 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  sitename: 'Flashcards'
+  edit_card: 'Edit card'
+  create_card: 'Create card'
+  add_card: 'Add card'
+  add_deсk: 'Add desk'
+  back: 'Back'
+  deselect: 'Deselect'
+  make_current: 'Make current'
+  deck_card: 'Deck'
+  create_user: 'Create'
+  update_user: 'Update'
+  match: 'words are matching'
+
+  layouts:
+    nav:
+      sitename: 'Flashcards'
+      decks_path: 'All decks'
+      cards_path: 'All cards'
+      new_deck_path: 'Add deck'
+      new_card_path: 'Add card'
+      edit_user_path: 'Profile'
+      logout_path: 'Log Out'
+      signup_path: 'Sign Up'
+      login_path: 'Log In'
+  cards:
+    create:
+      success_create: 'Card %{card} was successfully created!'
+    update:
+      success_update: 'Card %{card} was successfully updated!'
+    destroy:
+      success_delete: 'Card %{card} was successfully deleted!'
+    form:
+      original_word: 'Original word'
+      translation: 'Translation'
+      review_date: 'Review date'
+      picture: 'Card picture'
+      create_card: 'Create Card'
+      edit_card: 'Edit Card'
+    index:
+      deck_name: 'Deck:'
+      no_cards: 'There are no cards in your library yet!'
+      next_review_date: 'Next review date:'
+    show:
+      next_review_date: 'Next review date:'
+      attempts_left: 'Attempts left:'
+      revision_number: 'Revision number:'
+      deck_name: 'Deck:'
+      reset_revisions: 'Reset revisions'
+      edit_card_path: 'Edit'
+      delete_card_path: 'Delete'
+      confirmation: 'Are you sure?'
+  decks:
+    form:
+      deck_title: 'Deck title'
+      create_deck: 'Create'
+      edit_deсk: 'Edit'
+    index:
+      no_decks: 'There are no decks yet! Please create one!'
+      card_number: 'Cards number:'
+    show:
+      edit_desk: 'Edit'
+      delete_desk: 'Delete'
+      no_cards_deck: 'There are no cards in this deck yet!'
+      confirmation: 'Are you sure?'
+    create:
+      success_create: 'Deck %{deck} was successfully created!'
+    update:
+      success_update: 'Deck %{deck} was successfully updated!'
+    destroy:
+      success_delete: 'Deck %{deck} was successfully deleted!'
+  home:
+    form:
+      translation: 'Translation'
+      check: 'Check'
+      attempts_left: 'Attempts left:'
+      revision_number: 'Revision number:'
+      all_cards_done: 'All of the cards have been revised. Well done!'
+    index:
+      hello: 'Hello '
+    welcome:
+      welcome_message: 'Please login or signup to start learning new words!'
+      connect: 'Connect with:'
+    check_card:
+      correct: 'Correct translation. Well done!'
+      misspelled: 'You were almost right! You entered: %{input}, but the correct word is %{original}!'
+      incorrect: 'Incorrect translation. Please review the word!'
+  user_sessions:
+    form:
+      email: 'Email:'
+      password: 'Password:'
+      login_path: 'Log In'
+    new:
+      login_path: 'Log In'
+    create:
+      login_success: 'You Logged In successfully!'
+      login_failed: 'Login failed!'
+    destroy:
+      logout_success: 'You Logged out successfully!!'
+  users:
+    create:
+      success_create: 'User %{user} was successfully created!'
+      failed_create: 'User registration failed!'
+    update:
+      success_update: 'User %{user} details were successfully updated!'
+      failed_update: 'User %{user} details update failed!'
+    destroy:
+      success_delete: 'User %{user} was deleted!'
+    new:
+      new_user_registration: 'New user registration'
+    edit:
+      edit_user: 'Edit user'
+    form:
+      email: 'Email:'
+      password: 'Password:'
+      password_confirmation: 'Password confirmation'
+      language: 'Language'
+      connect: 'Connect with:'
+      unlink_github: 'Unlink your Github account'
+      unlink_facebook: 'Unlink your Facebook account'
+      unlink_twitter: 'Unlink your Twitter account'
+      delete_user: 'Delete your acccount'
+      confirmation: 'Are you sure?'
+  oauths:
+    callback:
+      success_login: 'Logged in from %{provider}!'
+      failed_login: 'Failed to login from %{provider}!'
+    destroy:
+      success_unlunk: 'You have successfully unlinked your %{provider} account.'
+      failed_unlink: 'You do not currently have a linked %{provider} account.'

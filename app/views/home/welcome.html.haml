@@ -3,12 +3,18 @@
     .col-md-6.col-md-offset-3
       %form
         .form-group.text-center
-          %h3
-            You can #{link_to 'Login', :login} or #{link_to 'Signup', new_user_path} to start learning new words!
+          %h3= t('.welcome_message')
+
         .form-group.text-center
-          %label{:for => "social_icons"} Connect with:
+          %label{:for => "social_icons"}
+            = t('.connect')
           %div
             - %w(facebook twitter github).map do |link|
               = link_to auth_at_provider_path(provider: link) do
                 = fa_stacked_icon link, base: "square-o", class: "fa-2x"
+      .row
+        .col-md-6.col-md-offset-4
+          .btn-group{ "aria-label" => "...", :role => "group" }
+            = link_to 'English', url_for( :locale => 'en' ), class: "btn btn-default btn-md"
+            = link_to 'Русский', url_for( :locale => 'ru' ), class: "btn btn-default btn-md"
   %br/

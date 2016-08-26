@@ -1,0 +1,27 @@
+%nav.navbar.navbar-default
+  .container
+    / Brand and toggle get grouped for better mobile display
+    .navbar-header
+      %button.navbar-toggle.collapsed{ "aria-expanded" => "false", "data-target" => "#bs-example-navbar-collapse-1", "data-toggle" => "collapse", :type => "button" }
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to t('.sitename'), dashboard_path, id: 'logo', class: 'navbar-brand'
+    / Collect the nav links, forms, and other content for toggling
+    .collapse.navbar-collapse#bs-example-navbar-collapse-1
+      - if logged_in?
+        %ul.nav.navbar-nav
+          %li= link_to t('.decks_path'), decks_path
+          %li= link_to t('.cards_path'), cards_path
+          %li= link_to t('.new_deck_path'), new_deck_path
+          %li= link_to t('.new_card_path'), new_card_path
+      %ul.nav.navbar-nav.navbar-right
+        - if logged_in? && current_user
+          %li= link_to t('.edit_user_path'), edit_user_path(current_user.id)
+          %li= link_to t('.logout_path'), :logout, method: :post
+        - else
+          %li= link_to t('.signup_path'), new_user_path
+          %li= link_to t('.login_path'), :login
+    / /.navbar-collapse
+  / /.container-fluid

@@ -42,7 +42,7 @@ describe Card do
       user: user,
       deck: deck
     )
-    expect(card.errors[:original_text]).to include("Words match")
+    expect(card.errors[:original_text]).to include(I18n.t('match'))
   end
 
   describe '#increase_count' do

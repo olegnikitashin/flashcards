@@ -5,16 +5,15 @@
     .panel-body
       = simple_form_for :card, url: :check_card do |f|
         = image_tag @random_card.picture.url if @random_card.picture?
-        = f.input :input_text, label: 'Translation', input_html: { class: 'form-control' }, required: true
-        = f.button :submit, 'Check', input_html:{ class: 'btn btn-default' }
+        = f.input :input_text, label: t('.translation'), input_html: { class: 'form-control' }, required: true
+        = f.button :submit, t('.check'), input_html:{ class: 'btn btn-default' }
         = f.hidden_field :id, value: @random_card.id
     .panel-footer
-      %h4 Attempts left: #{@random_card.attempts}
-      %h4 Revision number: #{@random_card.revisions}
-      - if @random_card.errors.any?
-        %h2 Errors:
-        %ul
-        - @random_card.errors.full_messages do |message|
-          %li= message
+      %h4
+        = t('.attempts_left')
+        = @random_card.attempts
+      %h4
+        = t('.revision_number')
+        = @random_card.revisions
 - else
-  %p All of the cards have been revised! Well done!
+  %p= t('.all_cards_done')

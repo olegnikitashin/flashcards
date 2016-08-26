@@ -1,9 +1,7 @@
 .row
   .col-md-12
     - if @decks.empty?
-      %h3
-        There are no decks yet! Please create one!
-        %h3
+      %h3= t('.no_decks')
     - else
       - @decks.each do |deck|
         .col-md-4
@@ -12,7 +10,8 @@
               %h1.panel-title= link_to deck.title, deck
             .panel-body
               %h3.panel-title
-              = pluralize(deck.cards.length, 'card')
+                = t('.card_number')
+                = deck.cards.length
             - if deck.current?
               .panel-footer
                 %h3.panel-title
