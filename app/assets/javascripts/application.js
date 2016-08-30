@@ -16,11 +16,10 @@
 //= require_tree .
 
 $(document).ready(function() {
-  setInterval(updateDisplay, 1000);
-  $('#review_seconds').html(value);
   function updateDisplay(){
         var value = parseInt($('#review_seconds').val(), 10);
       value++;
        $('input#review_seconds').val(value);
-  }
-})
+  };
+  setInterval(updateDisplay, 1000);
+});
