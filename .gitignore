@@ -20,3 +20,4 @@
 /.env
 
 /public/uploads
+/config/newrelic.yml 

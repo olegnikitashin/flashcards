@@ -22,4 +22,4 @@ $(document).ready(function() {
        $('input#review_seconds').val(value);
   };
   setInterval(updateDisplay, 1000);
-});
+})
