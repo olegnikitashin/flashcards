@@ -3,7 +3,7 @@ class Card < ActiveRecord::Base
   belongs_to :user
   belongs_to :deck
 
-  before_save :set_review_date
+  before_create :set_review_date
   validates :original_text, :translated_text, :review_date, :user_id, :deck_id, presence: true
   validates_uniqueness_of :original_text, scope: :user_id, case_sensitive: false
   validate :validate_match
@@ -11,11 +11,13 @@ class Card < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  # Hours between reviews
-  INTERVAL_HOURS = { 0 => 0, 1 => 12.hours, 2 => 3.days, 3 => 7.days, 4 => 14.days, 5 => 30.days , 6 => 90.days, 7 => 0 }.freeze
-
   def self.random_card
     @random_card = Card.where('review_date <= ?', Date.today).order("RANDOM()").first
+  end
+
+  def calc(review_seconds)
+    calculation = Supermemo.construct(review_seconds, efactor, repetition)
+    update(calculation)
   end
 
   def self.expired_cards
@@ -35,25 +37,9 @@ class Card < ActiveRecord::Base
     end
   end
 
-  def increase_count
-    if revisions >= 6
-      update(attempts: 3, revisions: 0)
-    else
-      update(attempts: 3, revisions: revisions + 1)
-    end
-  end
-
-  def decrease_count
-    if attempts > 1
-      update(attempts: attempts - 1)
-    else
-      update(attempts: 3, revisions: revisions - 1)
-    end
-  end
-
   private
 
   def set_review_date
-    self.review_date = Date.today + INTERVAL_HOURS[revisions]
+    self.review_date = Date.today
   end
 end

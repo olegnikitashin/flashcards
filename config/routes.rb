@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get  'signup'     => 'users#new',              as: :signup
   post "check_card" => "home#check_card"
   put 'reset_revisions' => 'cards#reset_revisions', as: :reset
+  put 'reset_efactor' => 'cards#reset_efactor', as: :reset_efactor
 
   resources :user_sessions
   resources :users, except: [:index, :show]

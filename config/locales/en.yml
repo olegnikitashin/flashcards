@@ -58,6 +58,7 @@ en:
       picture: 'Card picture'
       create_card: 'Create Card'
       edit_card: 'Edit Card'
+      repetition: 'Number of repetitions'
     index:
       deck_name: 'Deck:'
       no_cards: 'There are no cards in your library yet!'
@@ -97,6 +98,8 @@ en:
       attempts_left: 'Attempts left:'
       revision_number: 'Revision number:'
       all_cards_done: 'All of the cards have been revised. Well done!'
+      repetition: 'Number of repetitions:'
+      efactor: 'EFactor:'
     index:
       hello: 'Hello '
     welcome:

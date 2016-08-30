@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy, :reset_revisions]
+  before_action :set_card, only: [:show, :edit, :update, :destroy, :reset_revisions, :reset_efactor]
 
   def index
     @cards = current_user.cards.order(created_at: :desc)
@@ -42,7 +42,12 @@ class CardsController < ApplicationController
   end
 
   def reset_revisions
-    @card.update(revisions: 0)
+    @card.update(repetition: 0)
+    redirect_to @card
+  end
+
+  def reset_efactor
+    @card.update(efactor: 2.5)
     redirect_to @card
   end
 

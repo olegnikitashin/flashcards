@@ -14,3 +14,22 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+// setInterval(updateDisplay, 1000);
+//
+// function updateDisplay(){
+//       var value = parseInt($('#timer').find('.value').text(), 10);
+//
+//     value++;
+//      $('#timer').find('.value').text(value);
+
+}
+//
+// $(document).ready(function() {
+//   $(".btn").click(function() {
+//     var time;
+//     time = $('#timer').html();
+//     return $()
+//   })
+// })
+//

@@ -6,14 +6,18 @@
       = simple_form_for :card, url: :check_card do |f|
         = image_tag @random_card.picture.url if @random_card.picture?
         = f.input :input_text, label: t('.translation'), input_html: { class: 'form-control' }, required: true
-        = f.button :submit, t('.check'), input_html:{ class: 'btn btn-default' }
+        = f.button :submit, t('.check'), input_html:{ class: 'btn btn-default', id: 'submit'}
         = f.hidden_field :id, value: @random_card.id
+        -# = f.hidden_field :review_seconds, { value: nil, id: 'review_seconds' }
     .panel-footer
+      -# %h4
+      -#   #timer
+      -#     %span.value 0
       %h4
-        = t('.attempts_left')
-        = @random_card.attempts
+        = t('.repetition')
+        = @random_card.repetition
       %h4
-        = t('.revision_number')
-        = @random_card.revisions
+        = t('.efactor')
+        = @random_card.efactor
 - else
   %p= t('.all_cards_done')
