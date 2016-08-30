@@ -19,7 +19,7 @@ class HomeController < ApplicationController
     @input_text = params[:card][:input_text]
     if @card.levenshtein_check(@input_text) == 0
       @card.calc(params[:card][:review_seconds])
-      flash[:info] = params[:card]
+      # flash[:info] = params[:card]
       flash[:success] = t('.correct')
     elsif @card.levenshtein_check(@input_text) <= 2
       @card.calc(params[:card][:review_seconds])
