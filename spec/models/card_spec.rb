@@ -45,46 +45,39 @@ describe Card do
     expect(card.errors[:original_text]).to include(I18n.t('match'))
   end
 
-  describe '#increase_count' do
-    it 'will increase a revisions number by 1' do
-      card.update(attempts: 3, revisions: 0)
-      card.increase_count
-      expect(card.revisions).to eq 1
-      card.update(attempts: 1, revisions: 0)
-      card.increase_count
-      expect(card.attempts).to eq 3
-      card.update(attempts: 3, revisions: 6)
-      card.increase_count
-      expect(card.revisions).to eq 0
-    end
-  end
-
-  describe '#decrease_count' do
-    it 'will decrease an attempts number by 1' do
-      card.update(attempts: 3, revisions: 0)
-      card.decrease_count
-      expect(card.attempts).to eq 2
-      card.update(attempts: 1, revisions: 1)
-      card.decrease_count
-      expect(card.revisions).to eq 0
-      card.update(attempts: 1, revisions: 1)
-      card.decrease_count
-      expect(card.attempts).to eq 3
-    end
-  end
-  describe '#set_review_date' do
-    Card::INTERVAL_HOURS.each_pair do |revisions, days|
-      it 'will increase review_date according to revisions number' do
-        card.update(revisions: revisions)
-        expect(card.review_date).to eq Date.today + days
-      end
-    end
-  end
   describe '#expired_cards' do
     it 'will send an email if unrevised cards exist' do
       ActionMailer::Base.deliveries = []
       Card.expired_cards
       expect(ActionMailer::Base.deliveries.count).to eq 1
+    end
+  end
+
+  describe '#calc' do
+    it 'update efactor value' do
+      expect{ card.calc(5) }.to change{ card.efactor }.from(2.5).to(2.6)
+    end
+    it 'update repetition value' do
+      expect{ card.calc(5) }.to change{ card.repetition }.from(0).to(1)
+    end
+    it 'update review date' do
+      expect{ card.calc(5) }.to change{ card.review_date }.from(Date.today).to(Date.today + 1)
+    end
+  end
+  describe '#reset_repetitions' do
+    before do
+      card.update_attributes(repetition: 2)
+    end
+    it 'update repetition value' do
+      expect{ card.reset_repetitions }.to change{ card.repetition }.from(2).to(0)
+    end
+  end
+  describe '#reset_efactor' do
+    before do
+      card.update_attributes(efactor: 1.3)
+    end
+    it 'update efactor value' do
+      expect{ card.reset_efactor }.to change{ card.efactor }.from(1.3).to(2.5)
     end
   end
 end

@@ -302,19 +302,21 @@ ru:
       picture: 'Изображение'
       create_card: 'Создать карту'
       edit_card: 'Редактировать карту'
+      repetition: 'Номер повторения'
     index:
       deck_name: 'Колода:'
       no_cards: 'В вашей библиотеке пока что нет карточек!'
       next_review_date: 'Следующая дата проверки:'
     show:
       next_review_date: 'Следующая дата проверки:'
-      attempts_left: 'Попыток осталось:'
-      revision_number: 'Номер проверки:'
       deck_name: 'Колода:'
-      reset_revisions: 'Сбросить проверки'
+      reset_repetitions: 'Cбросить Повторения'
+      reset_efactor: 'Сбросить EFactor'
       edit_card_path: 'Редактировать'
       delete_card_path: 'Удалить'
       confirmation: 'Вы уверены?'
+      repetition: 'Номер повторения:'
+      efactor: 'EFactor:'
   decks:
     form:
       deck_title: 'Название колоды'
@@ -338,9 +340,9 @@ ru:
     form:
       translation: 'Перевод'
       check: 'Проверить'
-      attempts_left: 'Попыток осталось:'
-      revision_number: 'Номер проверки:'
       all_cards_done: 'Все карточки были просмотрены. Так держать!'
+      repetition: 'Номер повторения:'
+      efactor: 'EFactor:'
     index:
       hello: 'Привет '
     welcome:

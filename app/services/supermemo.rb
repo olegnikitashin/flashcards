@@ -1,20 +1,19 @@
 class Supermemo
-  def self.construct(seconds, efactor, repetition)
-    efactor_new = ef_calc(efactor, quality_calc(seconds))
-    repetition_new = repetition_calc(quality_calc(seconds), repetition)
+  def self.construct(review_seconds, efactor, repetition)
+    quality = quality_calc(review_seconds)
+    efactor_new = ef_calc(efactor, quality)
+    repetition_new = repetition_calc(quality, repetition)
     days = interval_calc(repetition_new, efactor_new)
     { efactor: efactor_new,
       repetition: repetition_new,
       review_date: Date.today + days.ceil }
   end
 
-  # private
-
-  def self.quality_calc(seconds) # return quality
+  def self.quality_calc(review_seconds) # return quality
     case
-    when (0..15).cover?(seconds.to_i) then 5
-    when (16..30).cover?(seconds.to_i) then 4
-    when (31..60).cover?(seconds.to_i) then 3
+    when (0..15).cover?(review_seconds.to_i) then 5
+    when (16..30).cover?(review_seconds.to_i) then 4
+    when (31..60).cover?(review_seconds.to_i) then 3
     else
       0
     end
@@ -34,7 +33,7 @@ class Supermemo
     when repetition_new == 0 then 0
     when repetition_new == 1 then 1
     when repetition_new == 2 then 6
-    when repetition_new > 2 then repetition_new * efactor_new
+    when repetition_new > 2 then (repetition_new - 1) * efactor_new
     end
   end
 end

@@ -37,6 +37,14 @@ class Card < ActiveRecord::Base
     end
   end
 
+  def reset_repetitions
+    update(repetition: 0)
+  end
+
+  def reset_efactor
+    update(efactor: 2.5)
+  end
+
   private
 
   def set_review_date

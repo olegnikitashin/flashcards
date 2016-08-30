@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :set_card, only: [:show, :edit, :update, :destroy, :reset_revisions, :reset_efactor]
+  before_action :set_card, only: [:show, :edit, :update, :destroy, :reset_repetitions, :reset_efactor]
 
   def index
     @cards = current_user.cards.order(created_at: :desc)
@@ -41,13 +41,13 @@ class CardsController < ApplicationController
     redirect_to cards_path
   end
 
-  def reset_revisions
-    @card.update(repetition: 0)
+  def reset_repetitions
+    @card.reset_repetitions
     redirect_to @card
   end
 
   def reset_efactor
-    @card.update(efactor: 2.5)
+    @card.reset_efactor
     redirect_to @card
   end
 
@@ -58,6 +58,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:original_text, :translated_text, :review_date, :picture, :deck_id, :revisions)
+    params.require(:card).permit(:original_text, :translated_text, :review_date, :picture, :deck_id, :repetition, :efactor)
   end
 end

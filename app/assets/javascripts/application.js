@@ -15,21 +15,12 @@
 //= require turbolinks
 //= require_tree .
 
-// setInterval(updateDisplay, 1000);
-//
-// function updateDisplay(){
-//       var value = parseInt($('#timer').find('.value').text(), 10);
-//
-//     value++;
-//      $('#timer').find('.value').text(value);
-
-}
-//
-// $(document).ready(function() {
-//   $(".btn").click(function() {
-//     var time;
-//     time = $('#timer').html();
-//     return $()
-//   })
-// })
-//
+$(document).ready(function() {
+  setInterval(updateDisplay, 1000);
+  $('#review_seconds').html(value);
+  function updateDisplay(){
+        var value = parseInt($('#review_seconds').val(), 10);
+      value++;
+       $('input#review_seconds').val(value);
+  }
+})
