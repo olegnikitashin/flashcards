@@ -12,17 +12,18 @@
           = t('.next_review_date')
           = @card.review_date.strftime("%d/%m/%Y")
         %p
-          = t('.attempts_left')
-          = @card.attempts
+          = t('.repetition')
+          = @card.repetition
         %p
-          = t('.revision_number')
-          = @card.revisions
+          = t('.efactor')
+          = @card.efactor
         %p
           = t('.deck_name')
           = @card.deck.title
     .col-md-8.col-md-offset-3
       .btn-group{ "aria-label" => "...", :role => "group" }
-        = link_to t('.reset_revisions'), reset_path(id: @card), method: :put, class: "btn btn-default btn-sm"
+        = link_to t('.reset_repetitions'), reset_repetitions_path(id: @card), method: :put, class: "btn btn-default btn-sm"
+        = link_to t('.reset_efactor'), reset_efactor_path(id: @card), method: :put, class: "btn btn-default btn-sm"
         = link_to t('.edit_card_path'), edit_card_path(@card), class: "btn btn-default btn-sm"
         = link_to t('.delete_card_path'), card_path(@card), method: :delete, data: { confirm: t('.confirmation') }, class: "btn btn-default btn-sm"
         = link_to t('back'), cards_path, class: "btn btn-default btn-sm"

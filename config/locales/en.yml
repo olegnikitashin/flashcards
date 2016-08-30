@@ -58,19 +58,21 @@ en:
       picture: 'Card picture'
       create_card: 'Create Card'
       edit_card: 'Edit Card'
+      repetition: 'Number of repetitions'
     index:
       deck_name: 'Deck:'
       no_cards: 'There are no cards in your library yet!'
       next_review_date: 'Next review date:'
     show:
       next_review_date: 'Next review date:'
-      attempts_left: 'Attempts left:'
-      revision_number: 'Revision number:'
       deck_name: 'Deck:'
-      reset_revisions: 'Reset revisions'
+      reset_repetitions: 'Reset Repetitions'
+      reset_efactor: 'Reset EFactor'
       edit_card_path: 'Edit'
       delete_card_path: 'Delete'
       confirmation: 'Are you sure?'
+      repetition: 'Number of repetitions:'
+      efactor: 'EFactor:'
   decks:
     form:
       deck_title: 'Deck title'
@@ -94,9 +96,9 @@ en:
     form:
       translation: 'Translation'
       check: 'Check'
-      attempts_left: 'Attempts left:'
-      revision_number: 'Revision number:'
       all_cards_done: 'All of the cards have been revised. Well done!'
+      repetition: 'Number of repetitions:'
+      efactor: 'EFactor:'
     index:
       hello: 'Hello '
     welcome:
