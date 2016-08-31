@@ -1,0 +1,8 @@
+<% if @random_card %>
+  $("#translation_form").html("<%= j render 'form' %>")
+  $("#notice").html("<%= j render 'message' %>")
+  timer();
+<% else %>
+  $("#translation_form").html("<p><%= j t('.all_cards_done') %></p>")
+  $("#notice").html("<%= j render 'message' %>")
+<% end %>

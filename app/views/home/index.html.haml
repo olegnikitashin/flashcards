@@ -4,5 +4,10 @@
       %p
         = t('.hello')
         = current_user.email
-      = render 'form'
+        #notice
+        #translation_form
+          - if @random_card
+            = render 'form'
+          - else
+            %p= t('.all_cards_done')
   %br/

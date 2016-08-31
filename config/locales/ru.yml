@@ -340,11 +340,11 @@ ru:
     form:
       translation: 'Перевод'
       check: 'Проверить'
-      all_cards_done: 'Все карточки были просмотрены. Так держать!'
       repetition: 'Номер повторения:'
       efactor: 'EFactor:'
     index:
       hello: 'Привет '
+      all_cards_done: 'Все карточки были просмотрены. Так держать!'
     welcome:
       welcome_message: 'Пожалуйста войдите или зарегистрируйтесь для изучения новых слов!'
       connect: 'Зайти через:'

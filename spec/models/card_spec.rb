@@ -55,13 +55,13 @@ describe Card do
 
   describe '#calc' do
     it 'update efactor value' do
-      expect{ card.calc(5) }.to change{ card.efactor }.from(2.5).to(2.6)
+      expect { card.calc(5) }.to change{ card.efactor }.from(2.5).to(2.6)
     end
     it 'update repetition value' do
-      expect{ card.calc(5) }.to change{ card.repetition }.from(0).to(1)
+      expect { card.calc(5) }.to change{ card.repetition }.from(0).to(1)
     end
     it 'update review date' do
-      expect{ card.calc(5) }.to change{ card.review_date }.from(Date.today).to(Date.today + 1)
+      expect { card.calc(5) }.to change{ card.review_date }.from(Date.today).to(Date.today + 1)
     end
   end
   describe '#reset_repetitions' do
@@ -69,7 +69,7 @@ describe Card do
       card.update_attributes(repetition: 2)
     end
     it 'update repetition value' do
-      expect{ card.reset_repetitions }.to change{ card.repetition }.from(2).to(0)
+      expect { card.reset_repetitions }.to change{ card.repetition }.from(2).to(0)
     end
   end
   describe '#reset_efactor' do
@@ -77,7 +77,7 @@ describe Card do
       card.update_attributes(efactor: 1.3)
     end
     it 'update efactor value' do
-      expect{ card.reset_efactor }.to change{ card.efactor }.from(1.3).to(2.5)
+      expect { card.reset_efactor }.to change{ card.efactor }.from(1.3).to(2.5)
     end
   end
 end

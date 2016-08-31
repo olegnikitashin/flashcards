@@ -1,20 +1,18 @@
-- if @random_card
-  .panel.panel-default
-    .panel-heading
-      = @random_card.translated_text
-    .panel-body
-      = simple_form_for :card, url: :check_card do |f|
+.panel.panel-default
+  .panel-heading#translated_text
+    = @random_card.translated_text
+  .panel-body
+    = simple_form_for :card, url: :check_card, remote: true do |f|
+      #card_picture
         = image_tag @random_card.picture.url if @random_card.picture?
-        = f.input :input_text, label: t('.translation'), input_html: { class: 'form-control' }, required: true
-        = f.button :submit, t('.check'), input_html:{ class: 'btn btn-default', id: 'submit'}
-        = f.hidden_field :id, value: @random_card.id
-        = f.hidden_field :review_seconds, { value: 0, id: 'review_seconds' }
-    .panel-footer
-      %h4
-        = t('.repetition')
-        = @random_card.repetition
-      %h4
-        = t('.efactor')
-        = @random_card.efactor
-- else
-  %p= t('.all_cards_done')
+      = f.input :input_text, label: t('.translation'), input_html: { class: 'form-control' }, required: true
+      = f.button :submit, t('.check'), input_html:{ class: 'btn btn-default', id: 'submit'}
+      = f.hidden_field :id, value: @random_card.id
+      = f.hidden_field :review_seconds, { value: 0, id: 'review_seconds' }
+  .panel-footer
+    %h4
+      = t('.repetition')
+      = @random_card.repetition
+    %h4
+      = t('.efactor')
+      = @random_card.efactor

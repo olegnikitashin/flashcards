@@ -8,7 +8,7 @@ describe "User Sessions", type: :feature do
       fill_in I18n.t('user_sessions.form.email'), with: user.email
       fill_in I18n.t('user_sessions.form.password'), with: 'foobar'
       click_button I18n.t('user_sessions.form.login_path')
-      expect(page).to have_content I18n.t('home.form.all_cards_done')
+      expect(page).to have_content I18n.t('home.index.all_cards_done')
     end
     it 'will not Log In a user with wrong password' do
       visit login_url

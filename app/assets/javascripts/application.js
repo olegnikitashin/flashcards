@@ -12,14 +12,19 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 
-$(document).ready(function() {
+function timer() {
   function updateDisplay(){
         var value = parseInt($('#review_seconds').val(), 10);
       value++;
        $('input#review_seconds').val(value);
+
   };
   setInterval(updateDisplay, 1000);
-})
+};
+
+
+$(document).ready(function() {
+  timer();
+});
