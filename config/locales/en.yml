@@ -96,11 +96,11 @@ en:
     form:
       translation: 'Translation'
       check: 'Check'
-      all_cards_done: 'All of the cards have been revised. Well done!'
       repetition: 'Number of repetitions:'
       efactor: 'EFactor:'
     index:
       hello: 'Hello '
+      all_cards_done: 'All of the cards have been revised. Well done!'
     welcome:
       welcome_message: 'Please login or signup to start learning new words!'
       connect: 'Connect with:'

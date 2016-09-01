@@ -12,6 +12,10 @@ class HomeController < ApplicationController
         current_user.decks.find_current_deck.cards.random_card
       end
     end
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   def check_card
