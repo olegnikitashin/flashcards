@@ -1,4 +1,4 @@
-class CardsController < ApplicationController
+class Dashboard::CardsController < Dashboard::ApplicationController
   before_action :set_card, only: [:show, :edit, :update, :destroy, :reset_repetitions, :reset_efactor]
 
   def index

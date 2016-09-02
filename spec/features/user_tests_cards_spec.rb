@@ -11,27 +11,27 @@ describe "Main", type: :feature do
     before do
       visit login_url
       # byebug
-      fill_in I18n.t('user_sessions.form.email'), with: 'test@example.com'
-      fill_in I18n.t('user_sessions.form.password'), with: 'foobar'
-      click_button I18n.t('user_sessions.form.login_path')
+      fill_in I18n.t('home.user_sessions.form.email'), with: 'test@example.com'
+      fill_in I18n.t('home.user_sessions.form.password'), with: 'foobar'
+      click_button I18n.t('home.user_sessions.form.login_path')
     end
     it 'will return: Correct translation. Well done! if the translation is correct' do
-      visit :dashboard
-      fill_in I18n.t('home.form.translation'), with: 'Door'
-      click_button I18n.t('home.form.check')
-      expect(page).to have_content I18n.t('home.check_card.correct')
+      visit :trainer
+      fill_in I18n.t('dashboard.trainer.form.translation'), with: 'Door'
+      click_button I18n.t('dashboard.trainer.form.check')
+      expect(page).to have_content I18n.t('dashboard.trainer.check_card.correct')
     end
     it 'will return: Incorrect translation. Please review the word! if the translation is incorrect' do
-      visit :dashboard
-      fill_in I18n.t('home.form.translation'), with: 'Wrong'
-      click_button I18n.t('home.form.check')
-      expect(page).to have_content I18n.t('home.check_card.incorrect')
+      visit :trainer
+      fill_in I18n.t('dashboard.trainer.form.translation'), with: 'Wrong'
+      click_button I18n.t('dashboard.trainer.form.check')
+      expect(page).to have_content I18n.t('dashboard.trainer.check_card.incorrect')
     end
     it 'will return: Correct translation. Well done! if the user misspelled one character is correct' do
-      visit :dashboard
-      fill_in I18n.t('home.form.translation'), with: 'Dorr'
-      click_button I18n.t('home.form.check')
-      expect(page).to have_content I18n.t('home.check_card.misspelled', input: 'Dorr', original: 'Door')
+      visit :trainer
+      fill_in I18n.t('dashboard.trainer.form.translation'), with: 'Dorr'
+      click_button I18n.t('dashboard.trainer.form.check')
+      expect(page).to have_content I18n.t('dashboard.trainer.check_card.misspelled', input: 'Dorr', original: 'Door')
     end
   end
 end

@@ -1,27 +1,33 @@
 Rails.application.routes.draw do
 
-  root 'home#welcome'
+  root 'home/welcome#welcome'
 
-  get 'dashboard'          => 'home#index',      as: :dashboard
-  post   "oauth/callback"  => "oauths#callback"
-  get    "oauth/callback"  => "oauths#callback" # for use with Github, Facebook
-  get    "oauth/:provider" => "oauths#oauth",    as: :auth_at_provider
-  delete "oauth/:provider" => "oauths#destroy",  as: :delete_oauth
-  get  'login'      => 'user_sessions#new',      as: :login
-  post 'logout'     => 'user_sessions#destroy',  as: :logout
-  get  'signup'     => 'users#new',              as: :signup
-  post "check_card" => "home#check_card"
-  put 'reset_repetitions' => 'cards#reset_repetitions', as: :reset_repetitions
-  put 'reset_efactor' => 'cards#reset_efactor', as: :reset_efactor
+  scope '/home', module: 'home' do
+    post   "oauth/callback"  => "oauths#callback"
+    get    "oauth/callback"  => "oauths#callback" # for use with Github, Facebook
+    get    "oauth/:provider" => "oauths#oauth",           as: :auth_at_provider
+    get  'login'             => 'user_sessions#new',      as: :login
+    get  'signup'            => 'users#new',              as: :signup
+    resource :user_sessions, only: [:new, :create]
+    resources :users, only: [:new, :create]
+  end
 
-  resources :user_sessions
-  resources :users, except: [:index, :show]
-  resources :decks do
-    member do
-      put 'make_current'
+  scope '/dashboard', module: 'dashboard' do
+    get 'trainer'            => 'trainer#index',           as: :trainer
+    post "check_card"        => "trainer#check_card"
+    post 'logout'            => 'user_sessions#destroy',   as: :logout
+    put 'reset_repetitions'  => 'cards#reset_repetitions', as: :reset_repetitions
+    put 'reset_efactor'      => 'cards#reset_efactor',     as: :reset_efactor
+    delete "oauth/:provider" => "oauths#destroy",          as: :delete_oauth
+    resource :user_sessions, only: :destroy
+    resources :users, only: [:edit, :update, :destroy]
+    resources :cards
+    resources :decks do
+      member do
+        put 'make_current'
+      end
     end
   end
-  resources :cards
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,4 @@
-class UserSessionsController < ApplicationController
-  skip_before_action :require_login, except: [:destroy]
+class Home::UserSessionsController < Home::ApplicationController
 
   def new
     @user = User.new
@@ -8,16 +7,10 @@ class UserSessionsController < ApplicationController
   def create
     if @user = login(params[:user][:email], params[:user][:password])
       flash[:success] = t('.login_success')
-      redirect_to :dashboard
+      redirect_to :trainer
     else
       flash.now[:danger] = t('.login_failed')
       render action: 'new'
     end
-  end
-
-  def destroy
-    logout
-    flash[:success] = t('.logout_success')
-    redirect_to root_path
   end
 end
