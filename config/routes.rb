@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   root 'home/welcome#welcome'
+  post   "oauth/callback"  => "oauths#callback"
+  get    "oauth/callback"  => "oauths#callback" # for use with Github, Facebook
+  get    "oauth/:provider" => "oauths#oauth",           as: :auth_at_provider
 
   scope '/home', module: 'home' do
-    post   "oauth/callback"  => "oauths#callback"
-    get    "oauth/callback"  => "oauths#callback" # for use with Github, Facebook
-    get    "oauth/:provider" => "oauths#oauth",           as: :auth_at_provider
     get  'login'             => 'user_sessions#new',      as: :login
     get  'signup'            => 'users#new',              as: :signup
     resource :user_sessions, only: [:new, :create]
