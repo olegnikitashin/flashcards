@@ -109,22 +109,22 @@ Rails.application.config.sorcery.configure do |config|
   # Twitter will not accept any requests nor redirect uri containing localhost,
   # make sure you use 0.0.0.0:3000 to access your app in development
   #
-  config.twitter.key = Rails.application.secrets.SORCERY_TWITTER_KEY
-  config.twitter.secret = Rails.application.secrets.SORCERY_TWITTER_SECRET
-  config.twitter.callback_url = Rails.application.secrets.SORCERY_TWITTER_CALLBACK_URL
+  config.twitter.key = "#{Rails.application.secrets.SORCERY_TWITTER_KEY}"
+  config.twitter.secret = "#{Rails.application.secrets.SORCERY_TWITTER_SECRET}"
+  config.twitter.callback_url = "#{Rails.application.secrets.SORCERY_TWITTER_CALLBACK_URL}"
   config.twitter.user_info_mapping = { email: "screen_name" }
   #
-  config.facebook.key = Rails.application.secrets.SORCERY_FACEBOOK_KEY
-  config.facebook.secret = Rails.application.secrets.SORCERY_FACEBOOK_SECRET
-  config.facebook.callback_url = Rails.application.secrets.SORCERY_FACEBOOK_CALLBACK_URL
+  config.facebook.key = "#{Rails.application.secrets.SORCERY_FACEBOOK_KEY}"
+  config.facebook.secret = "#{Rails.application.secrets.SORCERY_FACEBOOK_SECRET}"
+  config.facebook.callback_url = "#{Rails.application.secrets.SORCERY_FACEBOOK_CALLBACK_URL}"
   config.facebook.user_info_mapping = { email: "name" }
   config.facebook.access_permissions = %w(email publish_actions)
   config.facebook.display = "page"
   config.facebook.api_version = "v2.7"
   #
-  config.github.key = Rails.application.secrets.SORCERY_GITHUB_KEY
-  config.github.secret = Rails.application.secrets.SORCERY_GITHUB_SECRET
-  config.github.callback_url = Rails.application.secrets.SORCERY_GITHUB_CALLBACK_URL
+  config.github.key = "#{Rails.application.secrets.SORCERY_GITHUB_KEY}"
+  config.github.secret = "#{Rails.application.secrets.SORCERY_GITHUB_SECRET}"
+  config.github.callback_url = "#{Rails.application.secrets.SORCERY_GITHUB_CALLBACK_URL}"
   config.github.user_info_mapping = { email: "name" }
 
   # Rails.application.secrets.sorcery_github_key=edc545fd609bb86568eb
