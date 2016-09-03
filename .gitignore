@@ -20,4 +20,7 @@
 /.env
 
 /public/uploads
-/config/newrelic.yml 
+/config/newrelic.yml
+
+config/database.yml
+config/secrets.yml
