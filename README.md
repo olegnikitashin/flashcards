@@ -20,4 +20,4 @@ It offers the following features:
 
 ### Usage
 ----
-Please try the latest version following [this](https://on-flashcards.herokuapp.com/) link!
+Please try the latest version following [this](http://olegnikitashin.com/) link!
